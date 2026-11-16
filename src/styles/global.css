@@ -217,6 +217,8 @@ img { display: block; max-width: 100%; }
   width: 36px; height: 36px; fill: none; stroke: currentColor;
   stroke-width: 1.45; stroke-linecap: round; stroke-linejoin: round;
 }
+.shop-bag__body { fill: currentColor; stroke: none; }
+.shop-bag__handle { fill: none; stroke: currentColor; stroke-width: 1.8; }
 .utility-label { line-height: 1; white-space: nowrap; }
 .utility-link:hover { background: rgba(0, 0, 0, 0.1); }
 
