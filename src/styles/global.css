@@ -111,9 +111,11 @@ img { display: block; max-width: 100%; }
   flex: none;
 }
 .brand-logo {
-  height: 90%;
+  height: 82.8%;
   width: auto;
-  max-height: 78px;
+  max-height: 72px;
+  aspect-ratio: 280 / 198;
+  object-fit: contain;
   filter: brightness(0) invert(1);
 }
 .brand-name {
@@ -507,7 +509,7 @@ img { display: block; max-width: 100%; }
 @media (max-width: 860px) {
   .topbar, .navrow { padding: 0 18px; }
   .topbar { padding-right: 0; --header-top: 64px; min-height: 64px; height: 64px; gap: 10px; }
-  .brand-logo { height: 90%; width: auto; max-height: 58px; }
+  .brand-logo { height: 82.8%; width: auto; max-height: 53px; aspect-ratio: 280 / 198; object-fit: contain; }
   .brand-name { font-size: 23px; }
   .utility { align-self: stretch; }
   .utility-link { width: 54px; height: 100%; padding: 0; gap: 0; }
