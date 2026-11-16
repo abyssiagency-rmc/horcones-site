@@ -1,0 +1,181 @@
+---
+import { heroSlides } from "../data/hero";
+---
+
+<section class="hero" aria-roledescription="carrusel" aria-label="Historias del club" data-hero>
+  <div class="hero-slides">
+    {heroSlides.map((slide, index) => (
+      <article
+        class:list={["hero-slide", `hero-slide--${slide.layout}`, index === 0 && "is-active"]}
+        data-slide
+        aria-roledescription="slide"
+        aria-label={`${index + 1} de ${heroSlides.length}`}
+        aria-hidden={index !== 0}
+        inert={index !== 0}
+      >
+        {slide.layout === "full" ? (
+          <img
+            class="hero-bg"
+            src={slide.image}
+            alt={slide.imageAlt}
+            style={`object-position:${slide.position}`}
+            loading={index === 0 ? "eager" : "lazy"}
+            fetchpriority={index === 0 ? "high" : "auto"}
+          />
+        ) : null}
+        <div class="hero-scrim" aria-hidden="true"></div>
+        <div class="hero-inner">
+          <div class="hero-copy">
+            <p class="hero-eyebrow">{slide.eyebrow}</p>
+            <h1>{slide.title}</h1>
+            <p class="hero-body">{slide.body}</p>
+            <div class="hero-actions">
+              <a class="btn btn-primary" href={slide.ctaHref}>{slide.ctaLabel}</a>
+              {slide.secondaryLabel ? (
+                <a class="btn btn-ghost" href={slide.secondaryHref}>{slide.secondaryLabel}</a>
+              ) : null}
+            </div>
+          </div>
+          {slide.layout === "shop" ? (
+            <div class="hero-shop-media">
+              <img src={slide.image} alt={slide.imageAlt} loading="lazy" style={`object-position:${slide.position}`} />
+            </div>
+          ) : null}
+        </div>
+      </article>
+    ))}
+  </div>
+
+  <div class="hero-controls">
+    <button class="hero-arrow" type="button" data-hero-prev aria-label="Slide anterior">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m14.5 6-6 6 6 6" /></svg>
+    </button>
+    <div class="hero-dots" role="tablist" aria-label="Elegir slide">
+      {heroSlides.map((slide, index) => (
+        <button
+          class:list={["hero-dot", index === 0 && "is-active"]}
+          type="button"
+          role="tab"
+          aria-selected={index === 0}
+          aria-label={`Ir al slide ${index + 1}: ${slide.eyebrow}`}
+          data-hero-dot
+          data-index={index}
+        ></button>
+      ))}
+    </div>
+    <button class="hero-pause" type="button" data-hero-pause aria-pressed="false" aria-label="Pausar rotación">
+      <span class="pause-icon" aria-hidden="true"></span>
+      <span data-pause-label>Pausar</span>
+    </button>
+    <button class="hero-arrow" type="button" data-hero-next aria-label="Slide siguiente">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9.5 6 6 6-6 6" /></svg>
+    </button>
+  </div>
+</section>
+
+<script>
+  const hero = document.querySelector<HTMLElement>("[data-hero]");
+  if (hero) {
+    const slides = Array.from(hero.querySelectorAll<HTMLElement>("[data-slide]"));
+    const dots = Array.from(hero.querySelectorAll<HTMLButtonElement>("[data-hero-dot]"));
+    const pause = hero.querySelector<HTMLButtonElement>("[data-hero-pause]");
+    const pauseLabel = hero.querySelector<HTMLElement>("[data-pause-label]");
+    const reduced = window.matchMedia("(prefers-reduced-motion: reduce)");
+    let current = 0;
+    let timer = 0;
+    let paused = reduced.matches;
+
+    const setSlide = (next: number) => {
+      current = (next + slides.length) % slides.length;
+      slides.forEach((slide, index) => {
+        const active = index === current;
+        slide.classList.toggle("is-active", active);
+        slide.setAttribute("aria-hidden", String(!active));
+        if ("inert" in slide) (slide as HTMLElement & { inert: boolean }).inert = !active;
+        else slide.toggleAttribute("inert", !active);
+      });
+      dots.forEach((dot, index) => {
+        dot.classList.toggle("is-active", index === current);
+        dot.setAttribute("aria-selected", String(index === current));
+      });
+    };
+
+    const stop = () => {
+      window.clearInterval(timer);
+      timer = 0;
+    };
+
+    const start = () => {
+      stop();
+      if (paused || reduced.matches) return;
+      timer = window.setInterval(() => setSlide(current + 1), 7000);
+    };
+
+    const updatePause = () => {
+      pause?.setAttribute("aria-pressed", String(paused));
+      pause?.setAttribute("aria-label", paused ? "Reanudar rotación" : "Pausar rotación");
+      if (pauseLabel) pauseLabel.textContent = paused ? "Reanudar" : "Pausar";
+      if (paused) stop();
+      else start();
+    };
+
+    hero.querySelector("[data-hero-prev]")?.addEventListener("click", () => {
+      setSlide(current - 1);
+      start();
+    });
+    hero.querySelector("[data-hero-next]")?.addEventListener("click", () => {
+      setSlide(current + 1);
+      start();
+    });
+    dots.forEach((dot) => dot.addEventListener("click", () => {
+      setSlide(Number(dot.dataset.index));
+      start();
+    }));
+    pause?.addEventListener("click", () => {
+      paused = !paused;
+      updatePause();
+    });
+
+    hero.addEventListener("pointerenter", stop);
+    hero.addEventListener("pointerleave", start);
+    hero.addEventListener("focusin", stop);
+    hero.addEventListener("focusout", (event) => {
+      if (!hero.contains(event.relatedTarget as Node)) start();
+    });
+    hero.addEventListener("keydown", (event) => {
+      if (event.key === "ArrowLeft") {
+        setSlide(current - 1);
+        start();
+      }
+      if (event.key === "ArrowRight") {
+        setSlide(current + 1);
+        start();
+      }
+    });
+
+    let touchStart = 0;
+    hero.addEventListener("touchstart", (event) => {
+      touchStart = event.touches[0]?.clientX ?? 0;
+    }, { passive: true });
+    hero.addEventListener("touchend", (event) => {
+      const delta = (event.changedTouches[0]?.clientX ?? 0) - touchStart;
+      if (Math.abs(delta) > 45) {
+        setSlide(current + (delta < 0 ? 1 : -1));
+        start();
+      }
+    }, { passive: true });
+
+    document.addEventListener("visibilitychange", () => {
+      if (document.hidden) stop();
+      else start();
+    });
+
+    reduced.addEventListener?.("change", () => {
+      paused = reduced.matches;
+      updatePause();
+    });
+
+    updatePause();
+    setSlide(0);
+  }
+</script>

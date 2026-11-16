@@ -1,0 +1,78 @@
+---
+const nav = [
+  { label: "El Club", href: "/club" },
+  { label: "Equipos", href: "/equipos", children: [
+    ["Primer Equipo", "/equipos#primer-equipo"],
+    ["Intermedia", "/equipos#intermedia"],
+    ["Femenina", "/equipos#femenina"],
+    ["Juveniles", "/equipos#juveniles"],
+    ["Infantiles", "/equipos#infantiles"],
+  ] },
+  { label: "Partidos", href: "/partidos", children: [
+    ["Calendario", "/partidos#calendario"],
+    ["Resultados", "/partidos#resultados"],
+    ["Tickets", "/tickets"],
+  ] },
+  { label: "Eventos", href: "/eventos" },
+  { label: "Comunidad", href: "/comunidad" },
+];
+---
+
+<header class="site-header">
+  <input class="menu-toggle" type="checkbox" id="menu-toggle" aria-label="Abrir menú de navegación" />
+  <div class="topbar">
+    <a class="brand" href="/" aria-label="Horcones RC, inicio">
+      <img class="brand-logo" src="/images/logo-horcones.png" alt="Escudo de Horcones RC" />
+    </a>
+
+    <nav class="utility" aria-label="Accesos rápidos">
+      <a class="utility-link" href="/noticias">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 5h14v14H5zM8 9h8M8 12h8M8 15h5" /></svg>
+        <span>Noticias</span>
+      </a>
+      <a class="utility-link" href="/tienda">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 8h14l-1 12H6L5 8Z" /><path d="M9 8V6a3 3 0 0 1 6 0v2" /></svg>
+        <span>Tienda</span>
+      </a>
+      <a class="utility-link utility-ticket" href="/tickets">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 8h16v3a2 2 0 0 0 0 4v3H4v-3a2 2 0 0 0 0-4V8Z" /><path d="M9 8v10" /></svg>
+        <span>Tickets</span>
+      </a>
+    </nav>
+
+    <label class="menu-button" for="menu-toggle" aria-label="Abrir menú">
+      <span></span><span></span><span></span>
+    </label>
+  </div>
+
+  <div class="navrow">
+    <nav class="main-nav" aria-label="Navegación principal">
+      {nav.map((item) => item.children ? (
+        <details class="nav-dropdown">
+          <summary>{item.label} <span class="chevron">⌄</span></summary>
+          <div class="nav-dropdown-panel">
+            {item.children.map(([label, href]) => <a href={href}>{label}</a>)}
+          </div>
+        </details>
+      ) : (
+        <a class="nav-link" href={item.href}>{item.label}</a>
+      ))}
+    </nav>
+  </div>
+
+  <div class="mobile-panel">
+    <nav aria-label="Navegación móvil">
+      {nav.map((item) => (
+        <div class="mobile-group">
+          <a href={item.href}>{item.label}</a>
+          {item.children && item.children.map(([label, href]) => <a class="mobile-sub" href={href}>{label}</a>)}
+        </div>
+      ))}
+      <a href="/noticias">Noticias</a>
+      <a href="/tienda">Tienda</a>
+      <a href="/tickets">Tickets</a>
+    </nav>
+  </div>
+
+  <div class="header-stripe" aria-hidden="true"></div>
+</header>
