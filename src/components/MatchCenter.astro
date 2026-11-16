@@ -1,0 +1,59 @@
+---
+const match = {
+  kicker: "Próximo partido",
+  title: "Nos vemos en la cancha.",
+  home: "Horcones",
+  homeLabel: "Local",
+  homeTeam: "Primer Equipo",
+  away: "Por confirmar",
+  awayLabel: "Visitante",
+  awayTeam: "Rival",
+  day: "Sábado",
+  time: "18:00",
+  venue: "Cancha Horcones",
+};
+---
+
+<section class="match-section" aria-labelledby="match-title">
+  <div class="section-wrap">
+    <header class="section-head">
+      <div>
+        <p class="section-kicker">{match.kicker}</p>
+        <h2 id="match-title">{match.title}</h2>
+      </div>
+      <a class="section-link" href="/partidos">Ver calendario <span aria-hidden="true">→</span></a>
+    </header>
+
+    <div class="match-board">
+      <div class="match-team match-team--home">
+        <div class="team-crest">
+          <img src="/images/logo-horcones.png" alt="Escudo de Horcones RC" />
+        </div>
+        <p class="team-label">{match.homeLabel}</p>
+        <h3>{match.home}</h3>
+        <p class="team-meta">{match.homeTeam}</p>
+      </div>
+
+      <div class="match-center">
+        <p class="match-vs">VS</p>
+        <div class="match-when">
+          <span>{match.day}</span>
+          <strong>{match.time}</strong>
+        </div>
+        <p class="match-venue">{match.venue}</p>
+      </div>
+
+      <div class="match-team match-team--away">
+        <div class="team-crest team-crest--placeholder" aria-hidden="true">?</div>
+        <p class="team-label">{match.awayLabel}</p>
+        <h3>{match.away}</h3>
+        <p class="team-meta">{match.awayTeam}</p>
+      </div>
+    </div>
+
+    <div class="match-actions">
+      <a class="btn btn-primary" href="/tickets">Tickets del partido</a>
+      <a class="btn btn-outline" href="/partidos">Ver fixture completo</a>
+    </div>
+  </div>
+</section>
