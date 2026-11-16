@@ -1,0 +1,137 @@
+---
+const instagram = "https://www.instagram.com/";
+
+const fixtures = [
+  {
+    competicion: "Central ARUMET",
+    fecha: "Fecha 4",
+    local: "Valparaíso RC",
+    visita: "Horcones RC",
+    condicion: "Visitante",
+    sede: "Por confirmar",
+    cta: "Ver en Instagram",
+    href: instagram,
+  },
+  {
+    competicion: "Central ARUMET",
+    fecha: "Fecha 5",
+    local: "Horcones RC",
+    visita: "Viña RC",
+    condicion: "Local",
+    sede: "Cancha Horcones",
+    cta: "Ver en Instagram",
+    href: instagram,
+  },
+  {
+    competicion: "Amistoso",
+    fecha: "Preparación",
+    local: "Horcones RC",
+    visita: "San Bernardo",
+    condicion: "Local",
+    sede: "Cancha Horcones",
+    cta: "Ver en Instagram",
+    href: instagram,
+  },
+  {
+    competicion: "Seven",
+    fecha: "Evento deportivo",
+    local: "Seven Horcones",
+    visita: "Por confirmar",
+    condicion: "Sede por confirmar",
+    sede: "Próximamente",
+    cta: "Ver en Instagram",
+    href: instagram,
+  },
+];
+
+const tabla = [
+  { pos: 1, equipo: "Palestina", pts: 14, pj: 3, pf: 121, pc: 20, dp: "+101" },
+  { pos: 2, equipo: "Húsares", pts: 11, pj: 3, pf: 88, pc: 14, dp: "+74" },
+  { pos: 3, equipo: "San Bernardo", pts: 10, pj: 3, pf: 104, pc: 100, dp: "+4" },
+  { pos: 4, equipo: "Horcones RC", pts: 7, pj: 3, pf: 95, pc: 87, dp: "+8" },
+  { pos: 5, equipo: "Viña RC", pts: 5, pj: 1, pf: 32, pc: 14, dp: "+18" },
+  { pos: 6, equipo: "Valparaíso RC", pts: 5, pj: 3, pf: 31, pc: 131, dp: "-100" },
+  { pos: 7, equipo: "Dogos", pts: 0, pj: 2, pf: 5, pc: 52, dp: "-47" },
+];
+---
+
+<div class="fixture-extension">
+  <div class="fixture-head">
+    <div>
+      <p class="section-kicker">Fixture</p>
+      <h3>Próximos partidos</h3>
+    </div>
+    <div class="fixture-head-actions">
+      <a class="section-link" href="/partidos">Ver calendario <span aria-hidden="true">→</span></a>
+      <a class="btn btn-outline btn-small" href="/partidos">Ver fixture completo</a>
+    </div>
+  </div>
+
+  <div class="fixture-grid">
+    {fixtures.map((partido) => (
+      <article class="fixture-card">
+        <div class="fixture-top">
+          <span>{partido.competicion}</span>
+          <span class="fixture-date">{partido.fecha}</span>
+        </div>
+        <div class="fixture-matchup">
+          <h4>{partido.local}</h4>
+          <span class="fixture-vs" aria-hidden="true">VS</span>
+          <h4>{partido.visita}</h4>
+        </div>
+        <div class="fixture-meta">
+          <span>{partido.condicion}</span>
+          <span>{partido.sede}</span>
+        </div>
+        <a class="fixture-link" href={partido.href} target="_blank" rel="noreferrer">
+          {partido.cta} <span aria-hidden="true">→</span>
+        </a>
+      </article>
+    ))}
+  </div>
+
+  <section class="standings" aria-labelledby="standings-title">
+    <header class="standings-head">
+      <div>
+        <p class="section-kicker">Central ARUMET 2026</p>
+        <h3 id="standings-title">Tabla de posiciones</h3>
+      </div>
+      <span class="standings-badge">Provisional</span>
+    </header>
+
+    <div class="table-scroll">
+      <table>
+        <caption class="sr-only">Tabla de posiciones del Central ARUMET 2026</caption>
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Equipo</th>
+            <th scope="col">Pts</th>
+            <th scope="col">PJ</th>
+            <th scope="col">PF</th>
+            <th scope="col">PC</th>
+            <th scope="col">DP</th>
+          </tr>
+        </thead>
+        <tbody>
+          {tabla.map((fila) => (
+            <tr class:list={fila.equipo === "Horcones RC" && "is-horcones"}>
+              <td>{fila.pos}</td>
+              <th scope="row">{fila.equipo}</th>
+              <td class="pts">{fila.pts}</td>
+              <td>{fila.pj}</td>
+              <td>{fila.pf}</td>
+              <td>{fila.pc}</td>
+              <td class="dp">{fila.dp}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+
+    <p class="standings-source">
+      Tabla provisional. Fuente:
+      <a href="https://www.melipilladeportes.cl/horcones-rc-sumo-su-primer-triunfo-en-el-central-arumet-tras-wo-de-dogos/" target="_blank" rel="noreferrer">Melipilla Deportes</a>.
+    </p>
+  </section>
+</div>

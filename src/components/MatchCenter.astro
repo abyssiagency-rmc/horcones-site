@@ -1,4 +1,6 @@
 ---
+import FixtureExtension from "./FixtureExtension.astro";
+
 const match = {
   kicker: "Próximo partido",
   title: "Nos vemos en la cancha.",
@@ -21,7 +23,6 @@ const match = {
         <p class="section-kicker">{match.kicker}</p>
         <h2 id="match-title">{match.title}</h2>
       </div>
-      <a class="section-link" href="/partidos">Ver calendario <span aria-hidden="true">→</span></a>
     </header>
 
     <div class="match-board">
@@ -51,9 +52,6 @@ const match = {
       </div>
     </div>
 
-    <div class="match-actions">
-      <a class="btn btn-primary" href="/tickets">Tickets del partido</a>
-      <a class="btn btn-outline" href="/partidos">Ver fixture completo</a>
-    </div>
+    <FixtureExtension />
   </div>
 </section>
