@@ -1,40 +1,44 @@
 ---
-const equipos = [
+const jugadores = [
   {
     numero: "01",
-    nombre: "Primer Equipo",
-    kicker: "Rugby 15s · ARUMET",
-    descripcion: "El equipo que representa al club en la cancha.",
-    href: "/equipos#primer-equipo",
-    destacado: true,
+    nombre: "Jugador 01",
+    posicion: "Ala",
+    imagen: "/images/hero/hero-shop.jpg",
+    posicionImagen: "50% 30%",
+    href: "/equipos#jugador-01",
   },
   {
     numero: "02",
-    nombre: "Intermedia",
-    kicker: "Formación y competencia",
-    descripcion: "El puente entre las formativas y la primera.",
-    href: "/equipos#intermedia",
+    nombre: "Jugador 02",
+    posicion: "Centro",
+    imagen: "/images/hero/hero-match.jpg",
+    posicionImagen: "58% 40%",
+    href: "/equipos#jugador-02",
   },
   {
     numero: "03",
-    nombre: "Femenina",
-    kicker: "Rugby femenino",
-    descripcion: "Un espacio para desarrollar y competir.",
-    href: "/equipos#femenina",
+    nombre: "Jugador 03",
+    posicion: "Pilar",
+    imagen: "/images/hero/hero-night.jpg",
+    posicionImagen: "50% 32%",
+    href: "/equipos#jugador-03",
   },
   {
     numero: "04",
-    nombre: "Juveniles",
-    kicker: "Formación",
-    descripcion: "Trabajo técnico, físico y de valores.",
-    href: "/equipos#juveniles",
+    nombre: "Jugador 04",
+    posicion: "Medio scrum",
+    imagen: "/images/hero/hero-scrum.jpg",
+    posicionImagen: "50% 45%",
+    href: "/equipos#jugador-04",
   },
   {
     numero: "05",
-    nombre: "Infantiles",
-    kicker: "Escuela",
-    descripcion: "El primer contacto con el rugby.",
-    href: "/equipos#infantiles",
+    nombre: "Jugador 05",
+    posicion: "Fullback",
+    imagen: "/images/hero/hero-match.jpg",
+    posicionImagen: "38% 50%",
+    href: "/equipos#jugador-05",
   },
 ];
 ---
@@ -44,21 +48,44 @@ const equipos = [
     <header class="section-head">
       <div>
         <p class="section-kicker">Equipos</p>
-        <h2 id="teams-title">Un club, todas las edades.</h2>
+        <h2 id="teams-title">Un club, un equipo.</h2>
       </div>
-      <a class="section-link" href="/equipos">Ver equipos <span aria-hidden="true">→</span></a>
+      <a class="section-link" href="/equipos">Ver plantel <span aria-hidden="true">→</span></a>
     </header>
 
-    <div class="teams-grid">
-      {equipos.map((equipo) => (
-        <a class:list={["team-card", equipo.destacado && "team-card--feature"]} href={equipo.href}>
-          <span class="team-index">{equipo.numero}</span>
-          <div class="team-body">
-            <p class="team-kicker">{equipo.kicker}</p>
-            <h3>{equipo.nombre}</h3>
-            <p class="team-description">{equipo.descripcion}</p>
+    <a class="squad-card" href="/equipos#primer-equipo">
+      <img src="/images/hero/hero-scrum.jpg" alt="Plantel de Horcones RC en formación de scrum." loading="lazy" />
+      <div class="squad-card-overlay" aria-hidden="true"></div>
+      <div class="squad-card-content">
+        <p class="squad-kicker">Primer Equipo · Central ARUMET</p>
+        <h3>El plantel</h3>
+        <p>El grupo que representa a Horcones en la cancha.</p>
+        <span class="squad-link">Ver plantel <span aria-hidden="true">→</span></span>
+      </div>
+    </a>
+
+    <div class="players-head">
+      <div>
+        <p class="section-kicker">Destacados de la fecha</p>
+        <h3>Cinco nombres, una camiseta.</h3>
+      </div>
+      <p class="players-note">Último partido · Central ARUMET</p>
+    </div>
+
+    <div class="players-grid">
+      {jugadores.map((jugador) => (
+        <a class="player-card" href={jugador.href}>
+          <img src={jugador.imagen} alt="" aria-hidden="true" loading="lazy" style={`object-position:${jugador.posicionImagen}`} />
+          <div class="player-overlay" aria-hidden="true"></div>
+          <div class="player-top">
+            <span class="player-number">#{jugador.numero}</span>
+            <span class="player-tag">Destacado</span>
           </div>
-          <span class="team-arrow" aria-hidden="true">→</span>
+          <div class="player-bottom">
+            <p class="player-role">{jugador.posicion}</p>
+            <h3>{jugador.nombre}</h3>
+            <span class="player-link">Ver ficha <span aria-hidden="true">→</span></span>
+          </div>
         </a>
       ))}
     </div>
