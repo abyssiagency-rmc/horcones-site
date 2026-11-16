@@ -45,6 +45,7 @@
   --red-bright: #f6264d;
   --red-dark: #a80f2b;
   --red-deep: #8d0b24;
+  --separator: #b51f3b;
   --ink: #111318;
   --paper: #f4f1eb;
   --white: #fff;
@@ -158,7 +159,7 @@ img { display: block; max-width: 100%; }
   bottom: 0;
   left: 0;
   width: 2px;
-  background: linear-gradient(180deg, rgba(0, 0, 0, 0.3), var(--red-deep) 20%, #b31231 80%, rgba(255, 255, 255, 0.14));
+  background: var(--separator);
 }
 .utility-icon { display: inline-flex; align-items: center; justify-content: center; }
 .utility-icon svg {
@@ -171,8 +172,8 @@ img { display: block; max-width: 100%; }
 .layer-divider {
   height: 2px;
   width: 100%;
-  background: linear-gradient(180deg, rgba(0, 0, 0, 0.3), var(--red-deep) 20%, #b31231 80%, rgba(255, 255, 255, 0.14));
-  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.34), 0 -1px 0 rgba(255, 255, 255, 0.08);
+  background: var(--separator);
+  box-shadow: none;
 }
 .navrow {
   max-width: none;
