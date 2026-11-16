@@ -1089,6 +1089,135 @@ img { display: block; max-width: 100%; }
 }
 
 
+
+/* Equipos */
+.teams-section {
+  background: var(--paper);
+  padding: 86px 0 96px;
+  border-top: 1px solid rgba(17, 19, 24, 0.12);
+}
+.teams-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr);
+  grid-auto-rows: minmax(190px, auto);
+  gap: 16px;
+}
+.team-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-width: 0;
+  min-height: 190px;
+  padding: 24px;
+  overflow: hidden;
+  background: var(--white);
+  border: 1px solid rgba(17, 19, 24, 0.12);
+  color: var(--ink);
+  text-decoration: none;
+  transition: transform 220ms ease, background 220ms ease, box-shadow 220ms ease;
+}
+.team-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 3px;
+  background: transparent;
+  transition: background 220ms ease;
+}
+.team-card:hover {
+  background: #fffaf4;
+  box-shadow: 0 12px 26px rgba(17, 19, 24, 0.08);
+  transform: translateY(-2px);
+}
+.team-card:hover::before { background: var(--red); }
+.team-card--feature {
+  grid-row: span 2;
+  min-height: 396px;
+  background:
+    radial-gradient(circle at 90% 8%, rgba(255, 255, 255, 0.16), transparent 30%),
+    repeating-linear-gradient(135deg, transparent 0 34px, rgba(255, 255, 255, 0.055) 34px 35px),
+    var(--red);
+  color: var(--white);
+  border-color: var(--red);
+}
+.team-card--feature:hover { background-color: var(--red-dark); }
+.team-card--feature::before { background: rgba(255, 255, 255, 0.32); }
+.team-index {
+  display: block;
+  margin-left: auto;
+  color: rgba(17, 19, 24, 0.14);
+  font-family: var(--font-numeric);
+  font-size: 56px;
+  font-weight: 700;
+  line-height: 0.8;
+  letter-spacing: -0.03em;
+}
+.team-card--feature .team-index {
+  color: rgba(255, 255, 255, 0.28);
+  font-size: 76px;
+}
+.team-body { margin-top: auto; padding-top: 28px; }
+.team-kicker {
+  margin: 0 0 8px;
+  color: var(--red);
+  font-family: var(--font-subtitle);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+.team-card--feature .team-kicker { color: rgba(255, 255, 255, 0.74); }
+.team-card h3 {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: clamp(26px, 2.5vw, 34px);
+  font-weight: 900;
+  line-height: 0.95;
+  letter-spacing: -0.035em;
+  text-transform: uppercase;
+}
+.team-card--feature h3 { font-size: clamp(38px, 4vw, 54px); }
+.team-description {
+  max-width: 360px;
+  margin: 10px 0 0;
+  color: #62666e;
+  font-size: 14px;
+  line-height: 1.4;
+}
+.team-card--feature .team-description { color: rgba(255, 255, 255, 0.78); font-size: 16px; }
+.team-arrow {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  align-self: flex-end;
+  width: 36px;
+  height: 36px;
+  margin-top: 16px;
+  border: 1px solid rgba(17, 19, 24, 0.26);
+  border-radius: 50%;
+  color: var(--ink);
+  font-family: var(--font-label);
+  font-size: 16px;
+  transition: background 180ms ease, color 180ms ease, border-color 180ms ease;
+}
+.team-card:hover .team-arrow { background: var(--red); border-color: var(--red); color: var(--white); }
+.team-card--feature .team-arrow { border-color: rgba(255, 255, 255, 0.55); color: var(--white); }
+.team-card--feature:hover .team-arrow { background: var(--white); border-color: var(--white); color: var(--red); }
+
+@media (max-width: 860px) {
+  .teams-section { padding: 62px 0 72px; }
+  .teams-grid { grid-template-columns: 1fr; grid-auto-rows: auto; gap: 12px; }
+  .team-card--feature { grid-row: auto; min-height: 300px; }
+  .team-card { min-height: 176px; padding: 20px; }
+  .team-card--feature h3 { font-size: 42px; }
+  .team-index { font-size: 46px; }
+  .team-card--feature .team-index { font-size: 62px; }
+}
+
+
 /* Placeholder pages */
 .placeholder {
   max-width: 760px;
@@ -1274,6 +1403,7 @@ img { display: block; max-width: 100%; }
   .hero-slide { transition: none; }
   * { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; }
 }
+
 
 
 
