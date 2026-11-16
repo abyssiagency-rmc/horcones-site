@@ -19,21 +19,44 @@
   font-display: swap;
 }
 
+@font-face {
+  font-family: "Roboto Condensed";
+  src: url("/fonts/roboto-condensed-400.ttf") format("truetype");
+  font-weight: 400;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Roboto Condensed";
+  src: url("/fonts/roboto-condensed-500.ttf") format("truetype");
+  font-weight: 500;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Roboto Condensed";
+  src: url("/fonts/roboto-condensed-700.ttf") format("truetype");
+  font-weight: 700;
+  font-display: swap;
+}
+
 :root {
   --red: #cf1739;
   --red-bright: #f6264d;
   --red-dark: #a80f2b;
+  --red-deep: #8d0b24;
   --ink: #111318;
   --paper: #f4f1eb;
   --white: #fff;
   --muted: #b9bec9;
   --stripe: #d9d9d9;
   --max: 1280px;
-  --header-top: 62px;
-  --header-nav: 58px;
-  --font-body: "Geist", system-ui, sans-serif;
-  --font-display: "Bebas Neue", Impact, sans-serif;
-  --font-label: "Archivo", system-ui, sans-serif;
+  --header-top: 86px;
+  --header-nav: 46px;
+  --font-body: "Roboto Condensed", "Geist", system-ui, sans-serif;
+  --font-display: "Integral CF", "Bebas Neue", Impact, sans-serif;
+  --font-subtitle: "F37 Judge", "Archivo", system-ui, sans-serif;
+  --font-label: "F37 Judge", "Archivo", system-ui, sans-serif;
 }
 
 * { box-sizing: border-box; }
@@ -71,6 +94,7 @@ img { display: block; max-width: 100%; }
 }
 .topbar {
   min-height: var(--header-top);
+  height: var(--header-top);
   display: flex;
   align-items: center;
   gap: 22px;
@@ -78,14 +102,15 @@ img { display: block; max-width: 100%; }
 .brand {
   display: inline-flex;
   align-items: center;
-  gap: 10px;
-  min-height: 48px;
+  height: 100%;
+  padding: 0;
   text-decoration: none;
   flex: none;
 }
 .brand-logo {
-  width: 54px;
-  height: auto;
+  height: 90%;
+  width: auto;
+  max-height: 78px;
   filter: brightness(0) invert(1);
 }
 .brand-name {
@@ -103,38 +128,49 @@ img { display: block; max-width: 100%; }
   gap: 6px;
 }
 .utility-link {
+  position: relative;
   display: inline-flex;
   align-items: center;
-  gap: 7px;
-  min-height: 44px;
-  padding: 0 10px;
+  gap: 9px;
+  min-height: 46px;
+  padding: 0 14px;
   color: var(--white);
   text-decoration: none;
   font-family: var(--font-label);
   font-size: 13px;
-  letter-spacing: 0.03em;
-  border-radius: 3px;
+  letter-spacing: 0.035em;
+  border-radius: 0;
+  border-left: 1px solid var(--red-deep);
+  border-right: 1px solid var(--red-deep);
+  box-shadow: inset 1px 0 rgba(255, 255, 255, 0.12), inset -1px 0 rgba(0, 0, 0, 0.18);
 }
+.utility-link + .utility-link { margin-left: -1px; }
 .utility-link svg {
-  width: 18px; height: 18px; fill: none; stroke: currentColor;
-  stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round;
+  width: 27px; height: 27px; fill: none; stroke: currentColor;
+  stroke-width: 1.55; stroke-linecap: round; stroke-linejoin: round;
 }
 .utility-link:hover { background: rgba(0, 0, 0, 0.16); }
-.utility-ticket {
-  margin-left: 6px;
+.utility-shop {
   background: var(--white);
   color: var(--red);
   font-weight: 700;
-  padding: 0 16px;
 }
-.utility-ticket:hover { background: #f2eee7; color: var(--red-dark); }
+.utility-shop:hover { background: #f2eee7; color: var(--red-dark); }
+.utility-shop svg { stroke-width: 1.8; }
 
-.navrow { border-top: 1px solid rgba(255, 255, 255, 0.17); }
+.layer-divider {
+  height: 2px;
+  width: 100%;
+  background: var(--red-deep);
+  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.35), 0 -1px 0 rgba(255, 255, 255, 0.08);
+}
+.navrow { border-top: 0; }
 .main-nav {
   display: flex;
   align-items: center;
   gap: 2px;
   min-height: var(--header-nav);
+  height: var(--header-nav);
 }
 .nav-link,
 .nav-dropdown > summary {
@@ -240,7 +276,7 @@ img { display: block; max-width: 100%; }
 .hero-copy { width: min(720px, 100%); }
 .hero-eyebrow {
   margin: 0 0 12px;
-  font-family: var(--font-label);
+  font-family: var(--font-subtitle);
   font-size: 13px;
   letter-spacing: 0.13em;
   text-transform: uppercase;
@@ -251,7 +287,7 @@ img { display: block; max-width: 100%; }
   max-width: 700px;
   font-family: var(--font-display);
   font-size: clamp(48px, 6.8vw, 92px);
-  font-weight: 400;
+  font-weight: 700;
   line-height: 0.92;
   letter-spacing: 0.015em;
   text-wrap: balance;
@@ -403,7 +439,7 @@ img { display: block; max-width: 100%; }
 .footer-links { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
 .footer-links h2 {
   margin: 0 0 10px;
-  font-family: var(--font-label);
+  font-family: var(--font-subtitle);
   font-size: 12px;
   letter-spacing: 0.12em;
   text-transform: uppercase;
@@ -455,12 +491,13 @@ img { display: block; max-width: 100%; }
 
 @media (max-width: 860px) {
   .topbar, .navrow { padding: 0 18px; }
-  .brand-logo { width: 42px; }
+  .topbar { --header-top: 64px; min-height: 64px; height: 64px; }
+  .brand-logo { height: 90%; width: auto; max-height: 58px; }
   .brand-name { font-size: 23px; }
-  .utility-link { padding: 0 7px; }
+  .utility-link { padding: 0 7px; min-height: 40px; }
   .utility-link span { display: none; }
-  .utility-ticket { padding: 0 10px; }
-  .utility-ticket svg { width: 20px; height: 20px; }
+  .utility-link svg { width: 24px; height: 24px; }
+  .utility-shop { padding: 0 9px; }
   .navrow { display: none; }
   .menu-button {
     display: inline-flex;

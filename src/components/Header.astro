@@ -30,13 +30,13 @@ const nav = [
         <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 5h14v14H5zM8 9h8M8 12h8M8 15h5" /></svg>
         <span>Noticias</span>
       </a>
-      <a class="utility-link" href="/tienda">
-        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 8h14l-1 12H6L5 8Z" /><path d="M9 8V6a3 3 0 0 1 6 0v2" /></svg>
-        <span>Tienda</span>
-      </a>
-      <a class="utility-link utility-ticket" href="/tickets">
+      <a class="utility-link" href="/tickets">
         <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 8h16v3a2 2 0 0 0 0 4v3H4v-3a2 2 0 0 0 0-4V8Z" /><path d="M9 8v10" /></svg>
         <span>Tickets</span>
+      </a>
+      <a class="utility-link utility-shop" href="/tienda">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 8h14l-1 12H6L5 8Z" /><path d="M9 8V6a3 3 0 0 1 6 0v2" /></svg>
+        <span>Tienda</span>
       </a>
     </nav>
 
@@ -44,6 +44,8 @@ const nav = [
       <span></span><span></span><span></span>
     </label>
   </div>
+
+  <div class="layer-divider" aria-hidden="true"></div>
 
   <div class="navrow">
     <nav class="main-nav" aria-label="Navegación principal">
@@ -76,3 +78,20 @@ const nav = [
 
   <div class="header-stripe" aria-hidden="true"></div>
 </header>
+
+<script>
+  document.querySelectorAll<HTMLElement>(".nav-dropdown").forEach((item) => {
+    let closeTimer = 0;
+    item.addEventListener("pointerenter", () => {
+      window.clearTimeout(closeTimer);
+      item.setAttribute("open", "");
+    });
+    item.addEventListener("pointerleave", () => {
+      closeTimer = window.setTimeout(() => item.removeAttribute("open"), 140);
+    });
+    item.addEventListener("focusin", () => item.setAttribute("open", ""));
+    item.addEventListener("focusout", (event) => {
+      if (!item.contains(event.relatedTarget as Node)) item.removeAttribute("open");
+    });
+  });
+</script>
