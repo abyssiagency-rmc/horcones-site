@@ -705,12 +705,34 @@ img { display: block; max-width: 100%; }
   min-height: 266px;
   padding: 18px;
   overflow: hidden;
-  background:
-    linear-gradient(145deg, rgba(207, 23, 57, 0.15), transparent 38%),
-    #121419;
+  background: #121419;
   color: var(--white);
   border-top: 3px solid var(--red-bright);
 }
+.fixture-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.42;
+  transition: transform 600ms ease, opacity 600ms ease;
+}
+.fixture-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background:
+    linear-gradient(0deg, rgba(18, 20, 25, 0.96) 0%, rgba(18, 20, 25, 0.5) 68%, rgba(18, 20, 25, 0.18) 100%),
+    linear-gradient(90deg, rgba(18, 20, 25, 0.7), transparent 70%);
+}
+.fixture-card:hover .fixture-bg { transform: scale(1.04); opacity: 0.52; }
+.fixture-top,
+.fixture-matchup,
+.fixture-meta,
+.fixture-social { position: relative; z-index: 2; }
 .fixture-top {
   display: flex;
   align-items: center;
@@ -757,24 +779,29 @@ img { display: block; max-width: 100%; }
   font-size: 12px;
   line-height: 1.35;
 }
-.fixture-link {
-  display: flex;
+.fixture-social {
+  display: inline-flex;
   align-items: center;
-  justify-content: space-between;
-  gap: 10px;
+  justify-content: center;
+  align-self: flex-end;
+  width: 38px;
+  height: 38px;
   margin-top: 16px;
-  padding-top: 12px;
-  border-top: 1px solid rgba(255, 255, 255, 0.16);
+  border: 1px solid rgba(255, 255, 255, 0.38);
   color: var(--white);
-  font-family: var(--font-label);
-  font-size: 11px;
-  font-weight: 600;
-  letter-spacing: 0.07em;
   text-decoration: none;
-  text-transform: uppercase;
+  transition: background 180ms ease, border-color 180ms ease;
 }
-.fixture-link span { color: var(--red-bright); font-size: 15px; }
-.fixture-link:hover { color: #ffccd6; }
+.fixture-social svg {
+  width: 18px;
+  height: 18px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.fixture-social:hover { background: var(--red); border-color: var(--red); }
 
 .standings {
   margin-top: 54px;
