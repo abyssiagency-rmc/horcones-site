@@ -496,7 +496,7 @@ img { display: block; max-width: 100%; }
   .brand-name { font-size: 23px; }
   .utility-link { padding: 0 7px; min-height: 40px; }
   .utility-link span { display: none; }
-  .utility-link svg { width: 24px; height: 24px; }
+  .utility-link svg { width: 27px; height: 27px; }
   .utility-shop { padding: 0 9px; }
   .navrow { display: none; }
   .menu-button {
