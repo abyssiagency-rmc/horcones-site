@@ -47,9 +47,6 @@ import { heroSlides } from "../data/hero";
   </div>
 
   <div class="hero-controls">
-    <button class="hero-arrow" type="button" data-hero-prev aria-label="Slide anterior">
-      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m14.5 6-6 6 6 6" /></svg>
-    </button>
     <div class="hero-dots" role="tablist" aria-label="Elegir slide">
       {heroSlides.map((slide, index) => (
         <button
@@ -63,13 +60,6 @@ import { heroSlides } from "../data/hero";
         ></button>
       ))}
     </div>
-    <button class="hero-pause" type="button" data-hero-pause aria-pressed="false" aria-label="Pausar rotación">
-      <span class="pause-icon" aria-hidden="true"></span>
-      <span data-pause-label>Pausar</span>
-    </button>
-    <button class="hero-arrow" type="button" data-hero-next aria-label="Slide siguiente">
-      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9.5 6 6 6-6 6" /></svg>
-    </button>
   </div>
 </section>
 
@@ -78,12 +68,9 @@ import { heroSlides } from "../data/hero";
   if (hero) {
     const slides = Array.from(hero.querySelectorAll<HTMLElement>("[data-slide]"));
     const dots = Array.from(hero.querySelectorAll<HTMLButtonElement>("[data-hero-dot]"));
-    const pause = hero.querySelector<HTMLButtonElement>("[data-hero-pause]");
-    const pauseLabel = hero.querySelector<HTMLElement>("[data-pause-label]");
     const reduced = window.matchMedia("(prefers-reduced-motion: reduce)");
     let current = 0;
     let timer = 0;
-    let paused = reduced.matches;
 
     const setSlide = (next: number) => {
       current = (next + slides.length) % slides.length;
@@ -107,34 +94,14 @@ import { heroSlides } from "../data/hero";
 
     const start = () => {
       stop();
-      if (paused || reduced.matches) return;
-      timer = window.setInterval(() => setSlide(current + 1), 7000);
+      if (reduced.matches) return;
+      timer = window.setInterval(() => setSlide(current + 1), 4500);
     };
 
-    const updatePause = () => {
-      pause?.setAttribute("aria-pressed", String(paused));
-      pause?.setAttribute("aria-label", paused ? "Reanudar rotación" : "Pausar rotación");
-      if (pauseLabel) pauseLabel.textContent = paused ? "Reanudar" : "Pausar";
-      if (paused) stop();
-      else start();
-    };
-
-    hero.querySelector("[data-hero-prev]")?.addEventListener("click", () => {
-      setSlide(current - 1);
-      start();
-    });
-    hero.querySelector("[data-hero-next]")?.addEventListener("click", () => {
-      setSlide(current + 1);
-      start();
-    });
     dots.forEach((dot) => dot.addEventListener("click", () => {
       setSlide(Number(dot.dataset.index));
       start();
     }));
-    pause?.addEventListener("click", () => {
-      paused = !paused;
-      updatePause();
-    });
 
     hero.addEventListener("pointerenter", stop);
     hero.addEventListener("pointerleave", start);
@@ -171,11 +138,10 @@ import { heroSlides } from "../data/hero";
     });
 
     reduced.addEventListener?.("change", () => {
-      paused = reduced.matches;
-      updatePause();
+      start();
     });
 
-    updatePause();
     setSlide(0);
+    start();
   }
 </script>
