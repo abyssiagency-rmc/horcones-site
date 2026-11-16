@@ -17,7 +17,7 @@ export const heroSlides: HeroSlide[] = [
   {
     id: "identidad",
     eyebrow: "Horcones RC",
-    title: "El rugby se juega en equipo.",
+    title: "El rugby\nse juega\nen equipo.",
     ctaLabel: "Conoce el club",
     ctaHref: "/club",
     image: "/images/hero/hero-night.jpg",
