@@ -1,0 +1,69 @@
+---
+const noticias = [
+  {
+    categoria: "Crónica",
+    titulo: "El club volvió a casa",
+    resumen: "Una jornada de rugby, comunidad y tercer tiempo en Horcones.",
+    imagen: "/images/hero/hero-match.jpg",
+    alt: "Partido de rugby en la cancha de Horcones.",
+  },
+  {
+    categoria: "Formativas",
+    titulo: "Una mañana de aprendizaje en la cancha",
+    resumen: "Juveniles e infantiles compartieron una jornada de entrenamiento.",
+    imagen: "/images/hero/hero-scrum.jpg",
+    alt: "Jugadores de rugby en formación de scrum.",
+  },
+  {
+    categoria: "Comunidad",
+    titulo: "El tercer tiempo también se entrena",
+    resumen: "El club celebra el encuentro después del partido.",
+    imagen: "/images/hero/hero-night.jpg",
+    alt: "Jugador de rugby bajo las luces de la cancha.",
+  },
+];
+---
+
+<section class="news-section" aria-labelledby="news-title">
+  <div class="section-wrap">
+    <header class="section-head">
+      <div>
+        <p class="section-kicker">Actualidad</p>
+        <h2 id="news-title">Últimas noticias.</h2>
+      </div>
+      <a class="section-link" href="/noticias">Ver todas <span aria-hidden="true">→</span></a>
+    </header>
+
+    <div class="news-grid">
+      <article class="news-featured">
+        <a href="/noticias" class="news-featured-link">
+          <img src={noticias[0].imagen} alt={noticias[0].alt} loading="lazy" />
+          <div class="news-featured-overlay" aria-hidden="true"></div>
+          <div class="news-featured-content">
+            <span class="news-tag">{noticias[0].categoria}</span>
+            <h3>{noticias[0].titulo}</h3>
+            <p>{noticias[0].resumen}</p>
+            <span class="news-more">Leer nota <span aria-hidden="true">→</span></span>
+          </div>
+        </a>
+      </article>
+
+      <div class="news-side">
+        {noticias.slice(1).map((nota) => (
+          <article class="news-card">
+            <a href="/noticias">
+              <div class="news-card-image">
+                <img src={nota.imagen} alt={nota.alt} loading="lazy" />
+              </div>
+              <div class="news-card-copy">
+                <span class="news-tag">{nota.categoria}</span>
+                <h3>{nota.titulo}</h3>
+                <p>{nota.resumen}</p>
+              </div>
+            </a>
+          </article>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>
