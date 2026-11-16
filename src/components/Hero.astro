@@ -28,7 +28,7 @@ import { heroSlides } from "../data/hero";
           <div class="hero-copy">
             <p class="hero-eyebrow">{slide.eyebrow}</p>
             <h1>{slide.title}</h1>
-            <p class="hero-body">{slide.body}</p>
+            {slide.body ? <p class="hero-body">{slide.body}</p> : null}
             <div class="hero-actions">
               <a class="btn btn-primary" href={slide.ctaHref}>{slide.ctaLabel}</a>
               {slide.secondaryLabel ? (

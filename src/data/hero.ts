@@ -2,7 +2,7 @@ export interface HeroSlide {
   id: string;
   eyebrow: string;
   title: string;
-  body: string;
+  body?: string;
   ctaLabel: string;
   ctaHref: string;
   secondaryLabel?: string;
@@ -17,8 +17,7 @@ export const heroSlides: HeroSlide[] = [
   {
     id: "identidad",
     eyebrow: "Horcones RC",
-    title: "El rugby se juega en equipo. El club se vive todos los días.",
-    body: "Formamos jugadores, construimos comunidad.",
+    title: "El rugby se juega en equipo.",
     ctaLabel: "Conoce el club",
     ctaHref: "/club",
     image: "/images/hero/hero-night.jpg",
