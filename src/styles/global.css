@@ -20,17 +20,17 @@
 }
 
 @font-face {
-  font-family: "Integral CF";
-  src: url("/fonts/integral-cf-bold.woff2") format("woff2");
-  font-weight: 700;
+  font-family: "Inter Tight";
+  src: url("/fonts/inter-tight-latin.woff2") format("woff2");
+  font-weight: 100 900;
   font-style: normal;
   font-display: swap;
 }
 
 @font-face {
-  font-family: "F37 Judge";
-  src: url("/fonts/f37-judge-medium.woff2") format("woff2");
-  font-weight: 400;
+  font-family: "Antonio";
+  src: url("/fonts/antonio-latin.woff2") format("woff2");
+  font-weight: 100 700;
   font-style: normal;
   font-display: swap;
 }
@@ -43,17 +43,17 @@
 }
 
 @font-face {
-  font-family: "Integral CF";
-  src: url("/fonts/integral-cf-bold.woff2") format("woff2");
-  font-weight: 700;
+  font-family: "Inter Tight";
+  src: url("/fonts/inter-tight-latin.woff2") format("woff2");
+  font-weight: 100 900;
   font-style: normal;
   font-display: swap;
 }
 
 @font-face {
-  font-family: "F37 Judge";
-  src: url("/fonts/f37-judge-medium.woff2") format("woff2");
-  font-weight: 400;
+  font-family: "Antonio";
+  src: url("/fonts/antonio-latin.woff2") format("woff2");
+  font-weight: 100 700;
   font-style: normal;
   font-display: swap;
 }
@@ -66,17 +66,17 @@
 }
 
 @font-face {
-  font-family: "Integral CF";
-  src: url("/fonts/integral-cf-bold.woff2") format("woff2");
-  font-weight: 700;
+  font-family: "Inter Tight";
+  src: url("/fonts/inter-tight-latin.woff2") format("woff2");
+  font-weight: 100 900;
   font-style: normal;
   font-display: swap;
 }
 
 @font-face {
-  font-family: "F37 Judge";
-  src: url("/fonts/f37-judge-medium.woff2") format("woff2");
-  font-weight: 400;
+  font-family: "Antonio";
+  src: url("/fonts/antonio-latin.woff2") format("woff2");
+  font-weight: 100 700;
   font-style: normal;
   font-display: swap;
 }
@@ -103,9 +103,10 @@
   --header-top: 86px;
   --header-nav: 46px;
   --font-body: "Roboto Condensed", "Geist", system-ui, sans-serif;
-  --font-display: "Integral CF", "Bebas Neue", Impact, sans-serif;
-  --font-subtitle: "F37 Judge", "Archivo", system-ui, sans-serif;
-  --font-label: "F37 Judge", "Archivo", system-ui, sans-serif;
+  --font-display: "Inter Tight", "Geist", system-ui, sans-serif;
+  --font-subtitle: "Antonio", "Archivo", system-ui, sans-serif;
+  --font-label: "Inter Tight", "Archivo", system-ui, sans-serif;
+  --font-numeric: "Antonio", "Archivo", system-ui, sans-serif;
 }
 
 * { box-sizing: border-box; }
@@ -195,7 +196,7 @@ img { display: block; max-width: 100%; }
   text-decoration: none;
   font-family: var(--font-label);
   font-size: 11px;
-  font-weight: 400;
+  font-weight: 500;
   letter-spacing: 0.1em;
   text-transform: uppercase;
   background: transparent;
@@ -351,9 +352,11 @@ img { display: block; max-width: 100%; }
   margin: 0;
   max-width: 840px;
   font-family: var(--font-display);
-  font-size: clamp(42px, 4.9vw, 72px);
-  font-weight: 700;
-  line-height: 0.95;
+  font-size: clamp(42px, 5.1vw, 76px);
+  font-weight: 900;
+  line-height: 0.93;
+  letter-spacing: -0.025em;
+  text-transform: uppercase;
   letter-spacing: 0;
   text-wrap: balance;
 }
@@ -375,7 +378,9 @@ img { display: block; max-width: 100%; }
   border-radius: 3px;
   font-family: var(--font-label);
   font-size: 14px;
-  letter-spacing: 0.035em;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
   text-decoration: none;
   cursor: pointer;
 }
@@ -473,8 +478,9 @@ img { display: block; max-width: 100%; }
   margin: 0;
   font-family: var(--font-display);
   font-size: clamp(52px, 9vw, 90px);
-  font-weight: 400;
+  font-weight: 900;
   line-height: 0.95;
+  text-transform: uppercase;
 }
 .placeholder p { font-size: 18px; line-height: 1.55; }
 .placeholder-note { color: #5f6670; font-size: 15px !important; }
