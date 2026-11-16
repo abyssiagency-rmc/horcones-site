@@ -693,11 +693,6 @@ img { display: block; max-width: 100%; }
   align-items: center;
   gap: 22px;
 }
-.btn-small {
-  min-height: 42px;
-  padding: 0 16px;
-  font-size: 12px;
-}
 .fixture-grid {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
@@ -887,7 +882,6 @@ img { display: block; max-width: 100%; }
     justify-content: space-between;
     gap: 12px;
   }
-  .fixture-head-actions .btn { flex: none; }
   .fixture-grid { gap: 12px; }
   .fixture-card { min-height: 224px; padding: 16px; }
   .fixture-matchup { margin-top: 18px; }
@@ -901,11 +895,9 @@ img { display: block; max-width: 100%; }
   .fixture-grid { grid-template-columns: 1fr; }
   .fixture-card { min-height: 200px; }
   .fixture-head-actions {
-    align-items: stretch;
+    align-items: flex-start;
     flex-direction: column;
   }
-  .fixture-head-actions .section-link { align-self: flex-start; }
-  .fixture-head-actions .btn { width: 100%; }
 }
 
 
