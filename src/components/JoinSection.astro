@@ -1,0 +1,48 @@
+---
+const caminos = [
+  {
+    numero: "01",
+    kicker: "Súmate",
+    titulo: "¿Quieres jugar?",
+    texto: "Escuela, formativas y primer equipo. Si quieres conocer el club, empecemos por una conversación.",
+    cta: "Quiero jugar",
+    href: "/sumate",
+    tipo: "players",
+  },
+  {
+    numero: "02",
+    kicker: "Auspicios",
+    titulo: "Tu marca, en el club.",
+    texto: "Acompaña el crecimiento de Horcones y conecta con una comunidad que vive el rugby.",
+    cta: "Quiero auspiciar",
+    href: "/auspicios",
+    tipo: "sponsors",
+  },
+];
+---
+
+<section class="join-section" aria-labelledby="join-title">
+  <div class="section-wrap">
+    <header class="section-head join-head">
+      <div>
+        <p class="section-kicker">Comunidad</p>
+        <h2 id="join-title">Dos formas de ser parte.</h2>
+      </div>
+      <p class="join-intro">El club se construye en la cancha, en la tribuna y con quienes lo hacen posible.</p>
+    </header>
+
+    <div class="join-grid">
+      {caminos.map((camino) => (
+        <a class:list={["join-card", `join-card--${camino.tipo}`]} href={camino.href}>
+          <span class="join-number">{camino.numero}</span>
+          <div class="join-copy">
+            <p class="join-kicker">{camino.kicker}</p>
+            <h3>{camino.titulo}</h3>
+            <p>{camino.texto}</p>
+          </div>
+          <span class="join-link">{camino.cta} <span aria-hidden="true">→</span></span>
+        </a>
+      ))}
+    </div>
+  </div>
+</section>

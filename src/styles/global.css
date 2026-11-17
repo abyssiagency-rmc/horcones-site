@@ -1410,6 +1410,123 @@ img { display: block; max-width: 100%; }
 }
 
 
+
+/* Auspicios y Súmate */
+.join-section {
+  background: var(--paper);
+  padding: 86px 0 96px;
+  border-top: 1px solid rgba(17, 19, 24, 0.12);
+}
+.join-head { align-items: flex-end; }
+.join-intro {
+  max-width: 340px;
+  margin: 0 0 3px;
+  color: #676c75;
+  font-size: 14px;
+  line-height: 1.45;
+  text-align: right;
+}
+.join-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+.join-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-height: 370px;
+  padding: 28px;
+  overflow: hidden;
+  color: var(--white);
+  text-decoration: none;
+  border: 1px solid transparent;
+  transition: transform 220ms ease, box-shadow 220ms ease;
+}
+.join-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 16px 30px rgba(17, 19, 24, 0.14);
+}
+.join-card--players {
+  background:
+    radial-gradient(circle at 88% 4%, rgba(255, 255, 255, 0.17), transparent 32%),
+    repeating-linear-gradient(135deg, transparent 0 32px, rgba(255, 255, 255, 0.055) 32px 33px),
+    var(--red);
+}
+.join-card--sponsors {
+  background:
+    linear-gradient(90deg, rgba(22, 22, 22, 0.92), rgba(22, 22, 22, 0.34)),
+    url("/images/fixture-pattern.svg") center / cover,
+    #161616;
+  border-top: 3px solid var(--red-bright);
+}
+.join-number {
+  display: block;
+  margin-left: auto;
+  color: rgba(255, 255, 255, 0.3);
+  font-family: var(--font-numeric);
+  font-size: 68px;
+  font-weight: 700;
+  line-height: 0.8;
+  letter-spacing: -0.03em;
+}
+.join-copy { margin-top: auto; padding-top: 34px; }
+.join-kicker {
+  margin: 0 0 8px;
+  color: #ffccd6;
+  font-family: var(--font-subtitle);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+}
+.join-card--players .join-kicker { color: rgba(255, 255, 255, 0.72); }
+.join-card h3 {
+  max-width: 440px;
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: clamp(38px, 4vw, 56px);
+  font-weight: 900;
+  line-height: 0.92;
+  letter-spacing: -0.04em;
+  text-transform: uppercase;
+}
+.join-card .join-copy > p:last-child {
+  max-width: 420px;
+  margin: 12px 0 0;
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 15px;
+  line-height: 1.45;
+}
+.join-link {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  margin-top: 28px;
+  padding-top: 13px;
+  border-top: 1px solid rgba(255, 255, 255, 0.28);
+  font-family: var(--font-label);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+}
+.join-link span { color: var(--red-bright); font-size: 17px; }
+.join-card--players .join-link span { color: var(--white); }
+.join-card:hover .join-link span { transform: translateX(5px); }
+.join-link span { transition: transform 180ms ease; }
+
+@media (max-width: 860px) {
+  .join-section { padding: 62px 0 72px; }
+  .join-head { align-items: flex-start; flex-direction: column; gap: 16px; }
+  .join-intro { max-width: 460px; text-align: left; }
+  .join-grid { grid-template-columns: 1fr; gap: 12px; }
+  .join-card { min-height: 300px; padding: 22px; }
+  .join-card h3 { font-size: 42px; }
+}
+
+
 /* Placeholder pages */
 .placeholder {
   max-width: 760px;
@@ -1595,6 +1712,7 @@ img { display: block; max-width: 100%; }
   .hero-slide { transition: none; }
   * { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; }
 }
+
 
 
 
