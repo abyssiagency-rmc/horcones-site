@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 420" role="img" aria-label="Camiseta de entrenamiento de Horcones RC">
+  <g stroke-linejoin="round" stroke-linecap="round">
+    <path d="M112 58 145 42C158 38 202 38 215 42L248 58 294 130 255 158 229 123 233 365C233 377 224 386 212 386H148C136 386 127 377 127 365L131 123 105 158 66 130Z" fill="#22252b" stroke="#4a4d54" stroke-width="3"/>
+    <path d="M145 42C155 58 166 66 180 66C194 66 205 58 215 42" fill="#cf1739" stroke="#4a4d54" stroke-width="3"/>
+    <path d="M131 123 127 365M229 123 233 365" fill="none" stroke="#cf1739" stroke-width="5" opacity=".9"/>
+    <path d="M66 130 105 158M294 130 255 158" fill="none" stroke="#cf1739" stroke-width="8"/>
+    <path d="M112 58 145 42M248 58 215 42" fill="none" stroke="#4a4d54" stroke-width="2" opacity=".45"/>
+    <path d="M139 342H221" fill="none" stroke="#4a4d54" stroke-width="2" opacity=".3"/>
+    <circle cx="180" cy="214" r="19" fill="none" stroke="#f6264d" stroke-width="2"/>
+    <text x="180" y="219" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="700" fill="#f6264d">RC</text>
+    <text x="180" y="171" text-anchor="middle" font-family="Arial, sans-serif" font-size="18" font-weight="700" letter-spacing="2" fill="#ffffff">HORCONES</text>
+    <text x="180" y="294" text-anchor="middle" font-family="Arial, sans-serif" font-size="42" font-weight="700" fill="#f6264d">10</text>
+  </g>
+</svg>

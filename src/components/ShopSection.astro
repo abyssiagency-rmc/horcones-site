@@ -1,0 +1,62 @@
+---
+const productos = [
+  {
+    categoria: "Local 2026",
+    nombre: "Camiseta Local",
+    precio: "$39.990",
+    descripcion: "Rojo de local. Tejido liviano para partido y tribuna.",
+    imagen: "/images/shop/camiseta-local.svg",
+    alt: "Camiseta local roja de Horcones RC.",
+  },
+  {
+    categoria: "Visita 2026",
+    nombre: "Camiseta Visita",
+    precio: "$39.990",
+    descripcion: "Blanco y rojo. La equipación para jugar afuera.",
+    imagen: "/images/shop/camiseta-visita.svg",
+    alt: "Camiseta de visita blanca y roja de Horcones RC.",
+  },
+  {
+    categoria: "Entrenamiento",
+    nombre: "Camiseta Entrenamiento",
+    precio: "$29.990",
+    descripcion: "Negro y rojo. Para entrenar todos los días.",
+    imagen: "/images/shop/camiseta-entrenamiento.svg",
+    alt: "Camiseta de entrenamiento negra y roja de Horcones RC.",
+  },
+];
+---
+
+<section class="shop-section" aria-labelledby="shop-title">
+  <div class="section-wrap">
+    <header class="shop-head">
+      <div>
+        <p class="section-kicker">Tienda</p>
+        <h2 id="shop-title">Vestí los colores.</h2>
+      </div>
+      <div class="shop-head-side">
+        <p>Tres prendas para representar al club dentro y fuera de la cancha.</p>
+        <a class="section-link" href="/tienda">Ir a la tienda <span aria-hidden="true">→</span></a>
+      </div>
+    </header>
+
+    <div class="shop-grid">
+      {productos.map((producto) => (
+        <article class="shop-product">
+          <div class="shop-image">
+            <img src={producto.imagen} alt={producto.alt} loading="lazy" />
+          </div>
+          <div class="shop-info">
+            <p class="shop-category">{producto.categoria}</p>
+            <h3>{producto.nombre}</h3>
+            <p class="shop-price">{producto.precio}</p>
+            <p class="shop-description">{producto.descripcion}</p>
+            <a class="btn btn-outline shop-cta" href="/tienda">Ver en la tienda</a>
+          </div>
+        </article>
+      ))}
+    </div>
+
+    <p class="shop-note">Precios en pesos chilenos. Venta online en preparación; consulta disponibilidad en la tienda del club.</p>
+  </div>
+</section>
