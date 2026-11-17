@@ -1,0 +1,36 @@
+---
+const auspiciadores = [
+  { nombre: "Auspiciador 01", tipo: "Partner principal" },
+  { nombre: "Auspiciador 02", tipo: "Partner" },
+  { nombre: "Auspiciador 03", tipo: "Partner" },
+  { nombre: "Auspiciador 04", tipo: "Partner" },
+  { nombre: "Auspiciador 05", tipo: "Partner" },
+  { nombre: "Auspiciador 06", tipo: "Partner" },
+];
+---
+
+<section class="partners-section" aria-labelledby="partners-title">
+  <div class="section-wrap">
+    <header class="partners-head">
+      <div>
+        <p class="section-kicker">Auspiciadores</p>
+        <h2 id="partners-title">Nos acompañan.</h2>
+      </div>
+      <a class="section-link" href="/auspicios">Quiero auspiciar <span aria-hidden="true">→</span></a>
+    </header>
+
+    <div class="partners-grid" aria-label="Marcas auspiciadoras">
+      {auspiciadores.map((marca, index) => (
+        <a class="partner" href="/auspicios" aria-label={`Ver opciones de auspicio: ${marca.nombre}`}>
+          <span class="partner-mark" aria-hidden="true">{String(index + 1).padStart(2, "0")}</span>
+          <span class="partner-copy">
+            <strong>{marca.nombre}</strong>
+            <small>{marca.tipo}</small>
+          </span>
+        </a>
+      ))}
+    </div>
+
+    <p class="partners-note">Espacio para las marcas que hacen posible el rugby en Horcones.</p>
+  </div>
+</section>
