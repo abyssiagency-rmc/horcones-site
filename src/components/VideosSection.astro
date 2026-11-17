@@ -1,0 +1,84 @@
+---
+const videos = [
+  {
+    titulo: "El primer triunfo del Central ARUMET",
+    categoria: "Crónica",
+    fecha: "Temporada 2026",
+    imagen: "/images/hero/hero-match.jpg",
+    alt: "Jugadores de rugby en acción durante un partido.",
+  },
+  {
+    titulo: "El tercer tiempo vuelve a casa",
+    categoria: "Comunidad",
+    fecha: "Temporada 2026",
+    imagen: "/images/hero/hero-huddle.jpg",
+    alt: "Equipo de rugby reunido en ronda.",
+  },
+  {
+    titulo: "Una mañana en la escuela de rugby",
+    categoria: "Formativas",
+    fecha: "Temporada 2026",
+    imagen: "/images/hero/hero-scrum.jpg",
+    alt: "Jugadores de rugby en formación.",
+  },
+  {
+    titulo: "El club en sesenta segundos",
+    categoria: "Club",
+    fecha: "Temporada 2026",
+    imagen: "/images/hero/hero-night.jpg",
+    alt: "Jugador de rugby bajo las luces de la cancha.",
+  },
+  {
+    titulo: "Los colores de la temporada",
+    categoria: "Tienda",
+    fecha: "Temporada 2026",
+    imagen: "/images/hero/hero-shop.jpg",
+    alt: "Deportista mostrando una camiseta.",
+  },
+  {
+    titulo: "La voz del capitán",
+    categoria: "Entrevista",
+    fecha: "Temporada 2026",
+    imagen: "/images/players/jugador-05.jpg",
+    alt: "Jugador de rugby durante un entrenamiento.",
+  },
+  {
+    titulo: "Seven Horcones: lo que viene",
+    categoria: "Eventos",
+    fecha: "Temporada 2026",
+    imagen: "/images/hero/hero-scrum.jpg",
+    alt: "Equipo de rugby en la cancha.",
+  },
+];
+---
+
+<section class="videos-section" aria-labelledby="videos-title">
+  <div class="section-wrap">
+    <header class="section-head videos-head">
+      <div>
+        <p class="section-kicker">Videos</p>
+        <h2 id="videos-title">Videos destacados.</h2>
+      </div>
+      <a class="section-link section-link--light" href="/videos">Ver todos <span aria-hidden="true">→</span></a>
+    </header>
+
+    <div class="video-grid">
+      {videos.map((video, index) => (
+        <a class:list={["video-card", index === 0 && "video-card--feature"]} href="/videos">
+          <img src={video.imagen} alt={video.alt} loading="lazy" />
+          <div class="video-overlay" aria-hidden="true"></div>
+          <div class="video-content">
+            <span class="video-play" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M8 5.5v13l11-6.5L8 5.5Z" /></svg>
+            </span>
+            <h3>{video.titulo}</h3>
+            <p class="video-meta">
+              <span>{video.fecha}</span>
+              <span>{video.categoria}</span>
+            </p>
+          </div>
+        </a>
+      ))}
+    </div>
+  </div>
+</section>
