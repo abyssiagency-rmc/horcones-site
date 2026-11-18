@@ -3,6 +3,7 @@ import { heroSlides } from "../data/hero";
 ---
 
 <section class="hero" aria-roledescription="carrusel" aria-label="Historias del club" data-hero>
+  <h1 class="sr-only">Horcones RC · Rugby, comunidad y pertenencia</h1>
   <div class="hero-slides">
     {heroSlides.map((slide, index) => (
       <article
@@ -27,7 +28,7 @@ import { heroSlides } from "../data/hero";
         <div class="hero-inner">
           <div class="hero-copy">
             <p class="hero-eyebrow">{slide.eyebrow}</p>
-            <h1>{slide.title}</h1>
+            <h2>{slide.title}</h2>
             {slide.body ? <p class="hero-body">{slide.body}</p> : null}
             <div class="hero-actions">
               <a class="btn btn-primary" href={slide.ctaHref}>{slide.ctaLabel}</a>
