@@ -1,0 +1,51 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { products } from "../data/products";
+---
+
+<Layout title="Tienda · Horcones RC" description="Indumentaria oficial de Horcones RC. Camisetas local, visita y entrenamiento.">
+  <section class="shop-page-hero">
+    <div class="section-wrap">
+      <p class="section-kicker">Tienda oficial</p>
+      <h1>Nuestros colores.</h1>
+      <div class="shop-page-intro">
+        <p>Indumentaria del club. La venta online está en preparación; por ahora coordinamos disponibilidad por correo.</p>
+        <a class="section-link" href="#productos">Ver prendas <span aria-hidden="true">↓</span></a>
+      </div>
+    </div>
+  </section>
+
+  <section class="shop-page-products" id="productos" aria-labelledby="products-title">
+    <div class="section-wrap">
+      <div class="shop-page-heading">
+        <h2 id="products-title">Tres prendas, una identidad.</h2>
+        <span class="shop-page-status">Venta online próximamente</span>
+      </div>
+
+      <div class="product-list">
+        {products.map((producto) => (
+          <article class="product-detail">
+            <div class="product-detail-media">
+              <img src={producto.imagen} alt={producto.alt} loading="lazy" />
+            </div>
+            <div class="product-detail-info">
+              <p class="shop-category">{producto.categoria}</p>
+              <h3>{producto.nombre}</h3>
+              <p class="product-detail-price">{producto.precio}</p>
+              <p class="product-detail-description">{producto.descripcion}</p>
+              <p class="product-detail-sizes">
+                <span>Tallas</span> {producto.tallas.join(" · ")}
+              </p>
+              <a class="btn btn-primary" href={`mailto:contacto@horconesrc.cl?subject=Consulta%20${encodeURIComponent(producto.nombre)}`}>
+                Consultar disponibilidad
+              </a>
+              <p class="product-detail-note">Sin pago online. Coordinamos por correo.</p>
+            </div>
+          </article>
+        ))}
+      </div>
+
+      <a class="shop-page-back" href="/">← Volver al inicio</a>
+    </div>
+  </section>
+</Layout>

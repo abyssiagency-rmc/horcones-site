@@ -1,30 +1,5 @@
 ---
-const productos = [
-  {
-    categoria: "Local 2026",
-    nombre: "Camiseta Local",
-    precio: "$39.990",
-    descripcion: "Rojo de local. Tejido liviano para partido y tribuna.",
-    imagen: "/images/shop/camiseta-local.svg",
-    alt: "Camiseta local roja de Horcones RC.",
-  },
-  {
-    categoria: "Visita 2026",
-    nombre: "Camiseta Visita",
-    precio: "$39.990",
-    descripcion: "Blanco y rojo. La equipación para jugar afuera.",
-    imagen: "/images/shop/camiseta-visita.svg",
-    alt: "Camiseta de visita blanca y roja de Horcones RC.",
-  },
-  {
-    categoria: "Entrenamiento",
-    nombre: "Camiseta Entrenamiento",
-    precio: "$29.990",
-    descripcion: "Negro y rojo. Para entrenar todos los días.",
-    imagen: "/images/shop/camiseta-entrenamiento.svg",
-    alt: "Camiseta de entrenamiento negra y roja de Horcones RC.",
-  },
-];
+import { products } from "../data/products";
 ---
 
 <section class="shop-section" aria-labelledby="shop-title">
@@ -40,7 +15,7 @@ const productos = [
     </header>
 
     <div class="shop-grid">
-      {productos.map((producto) => (
+      {products.map((producto) => (
         <article class="shop-product">
           <div class="shop-image">
             <img src={producto.imagen} alt={producto.alt} loading="lazy" />
