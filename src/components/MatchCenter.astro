@@ -9,8 +9,9 @@ const topThree = standings.filter((fila) => fila.pos >= 3 && fila.pos <= 5);
     <header class="match-top">
       <div class="match-title-block">
         <p class="section-kicker">Próximo partido</p>
-        <h2 id="match-title">Nos vemos en la cancha.</h2>
+        <h2 id="match-title">Nos vemos<br />en la cancha.</h2>
       </div>
+      <a class="section-link" href="/partidos">Ver calendario <span aria-hidden="true">→</span></a>
     </header>
 
     <div class="match-cards">
@@ -56,13 +57,8 @@ const topThree = standings.filter((fila) => fila.pos >= 3 && fila.pos <= 5);
             <h4>{partido.visita}</h4>
           </div>
           <p class="upcoming-meta">{partido.condicion} · {partido.sede}</p>
-          <span class="upcoming-link">Ver información <span aria-hidden="true">→</span></span>
         </a>
       ))}
-    </div>
-
-    <div class="fixture-footer-link">
-      <a class="section-link" href="/partidos">Ver calendario <span aria-hidden="true">→</span></a>
     </div>
 
     <section class="standings standings--home" aria-labelledby="standings-title">

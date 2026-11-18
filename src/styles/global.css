@@ -1909,10 +1909,10 @@ img { display: block; max-width: 100%; }
 
 /* Nueva estructura de próximo partido y fixture */
 .match-top {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-  align-items: end;
-  gap: 36px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 24px;
   margin-bottom: 26px;
 }
 .match-title-block h2 {
@@ -2111,7 +2111,7 @@ img { display: block; max-width: 100%; }
   .next-match-card { grid-column: span 2; }
 }
 @media (max-width: 860px) {
-  .match-top { grid-template-columns: 1fr; gap: 24px; }
+  .match-top { align-items: flex-start; flex-direction: column; gap: 14px; }
   .match-cards { grid-template-columns: 1fr; gap: 12px; }
   .next-match-card { grid-column: auto; min-height: 340px; padding: 20px; }
   .match-cards .fixture-card { min-height: 300px; }
@@ -2378,7 +2378,7 @@ img { display: block; max-width: 100%; }
 }
 
 /* Tarjetas secundarias de fixture: lenguaje liviano */
-.match-top { display: block; }
+.match-top { display: flex; }
 .upcoming-card {
   position: relative;
   display: flex;
@@ -2391,7 +2391,8 @@ img { display: block; max-width: 100%; }
   background-color: #e9e6de;
   background-image: radial-gradient(rgba(17, 19, 24, 0.09) 0.55px, transparent 0.65px);
   background-size: 4px 4px;
-  border-top: 3px solid var(--red);
+  border-top: 0;
+  border-bottom: 3px solid var(--red);
   transition: transform 220ms ease, box-shadow 220ms ease, background-color 220ms ease;
 }
 .upcoming-card:hover {
@@ -2466,23 +2467,6 @@ img { display: block; max-width: 100%; }
   font-size: 12px;
   line-height: 1.35;
 }
-.upcoming-link {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 12px;
-  margin-top: auto;
-  padding-top: 13px;
-  border-top: 1px solid rgba(17, 19, 24, 0.2);
-  color: var(--ink);
-  font-family: var(--font-label);
-  font-size: 10px;
-  font-weight: 600;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-}
-.upcoming-link span { color: var(--red); font-size: 15px; transition: transform 180ms ease; }
-.upcoming-card:hover .upcoming-link span { transform: translateX(4px); }
 .fixture-footer-link {
   display: flex;
   justify-content: flex-end;
