@@ -1,0 +1,88 @@
+---
+import Layout from "../layouts/Layout.astro";
+
+const email = "contacto@horconesrc.cl";
+const subject = encodeURIComponent("Quiero jugar en Horcones");
+---
+
+<Layout title="Súmate · Horcones RC" description="Cómo sumarse a Horcones RC. Categoría disponible y contacto directo.">
+  <section class="access-hero" aria-labelledby="sumate-title">
+    <div class="section-wrap">
+      <p class="section-kicker">Súmate</p>
+      <h1 id="sumate-title">El club también se construye desde adentro.</h1>
+      <p class="access-hero-intro">
+        Hoy Horcones compite con <strong>Primer Equipo</strong>. Si quieres conocer el proyecto,
+        entrenar con el grupo o saber si hay lugar para ti, empecemos por una conversación.
+      </p>
+    </div>
+  </section>
+
+  <section class="access-content">
+    <div class="section-wrap access-layout">
+      <div class="access-main">
+        <h2>El primer paso es conversar.</h2>
+        <p>
+          No hay formularios ni inscripción automática. Escríbenos y coordinamos una primera
+          visita para conocer el club, el equipo y la forma de trabajo.
+        </p>
+
+        <ol class="access-steps">
+          <li>
+            <span>01</span>
+            <div>
+              <h3>Escríbenos</h3>
+              <p>Cuéntanos quién eres, en qué posición juegas y qué te gustaría encontrar en el club.</p>
+            </div>
+          </li>
+          <li>
+            <span>02</span>
+            <div>
+              <h3>Coordina una visita</h3>
+              <p>Acordamos un día para que conozcas al equipo y al cuerpo técnico.</p>
+            </div>
+          </li>
+          <li>
+            <span>03</span>
+            <div>
+              <h3>Conoce el entrenamiento</h3>
+              <p>Comparte una sesión y conversa sobre disponibilidad, categoría y expectativas.</p>
+            </div>
+          </li>
+          <li>
+            <span>04</span>
+            <div>
+              <h3>Decide con calma</h3>
+              <p>La incorporación depende del cupo del plantel y de la conversación entre ambas partes.</p>
+            </div>
+          </li>
+        </ol>
+
+        <h2>Qué necesitas saber</h2>
+        <ul class="access-list">
+          <li>La categoría disponible hoy es <strong>Primer Equipo</strong>.</li>
+          <li>Los días y horarios se confirman directamente por correo.</li>
+          <li>No pedimos formularios ni datos sensibles en la web.</li>
+          <li>Si no hay cupo, te lo diremos con claridad.</li>
+        </ul>
+
+        <a class="btn btn-primary access-cta" href={`mailto:${email}?subject=${subject}`}>
+          Quiero jugar
+        </a>
+      </div>
+
+      <aside class="access-aside" aria-label="Contacto para sumarse">
+        <p class="access-aside-kicker">Contacto directo</p>
+        <a class="access-mail" href={`mailto:${email}?subject=${subject}`}>
+          <span class="access-mail-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2" /><path d="m4 7 8 6 8-6" /></svg>
+          </span>
+          <span>
+            <strong>{email}</strong>
+            <small>Asunto: Quiero jugar en Horcones</small>
+          </span>
+        </a>
+        <p class="access-note">Sin formularios. Todo se coordina por correo.</p>
+      </aside>
+    </div>
+  </section>
+</Layout>

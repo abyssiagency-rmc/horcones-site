@@ -3026,3 +3026,185 @@ img { display: block; max-width: 100%; }
   outline-offset: 3px;
   box-shadow: 0 0 0 5px var(--white);
 }
+
+/* Páginas Súmate y Auspicios */
+.access-hero {
+  background: var(--paper);
+  padding: 82px 0 58px;
+}
+.access-hero h1 {
+  max-width: 1050px;
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: clamp(56px, 7.2vw, 96px);
+  font-weight: 900;
+  line-height: 0.9;
+  letter-spacing: -0.05em;
+  text-transform: uppercase;
+}
+.access-hero-intro {
+  max-width: 720px;
+  margin: 26px 0 0;
+  color: #565b64;
+  font-size: 17px;
+  line-height: 1.5;
+}
+.access-hero-intro strong { color: var(--ink); font-weight: 600; }
+.access-content {
+  background: var(--white);
+  padding: 0 0 90px;
+  border-top: 1px solid rgba(17, 19, 24, 0.12);
+}
+.access-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.25fr) minmax(260px, 0.75fr);
+  gap: 64px;
+  padding-top: 56px;
+}
+.access-main h2 {
+  margin: 42px 0 14px;
+  font-family: var(--font-display);
+  font-size: clamp(30px, 3.5vw, 44px);
+  font-weight: 900;
+  line-height: 0.95;
+  letter-spacing: -0.04em;
+  text-transform: uppercase;
+}
+.access-main h2:first-child { margin-top: 0; }
+.access-main > p {
+  max-width: 680px;
+  margin: 0;
+  color: #62666e;
+  font-size: 16px;
+  line-height: 1.5;
+}
+.access-steps {
+  margin: 24px 0 0;
+  padding: 0;
+  list-style: none;
+  border-top: 1px solid rgba(17, 19, 24, 0.14);
+}
+.access-steps li {
+  display: grid;
+  grid-template-columns: 54px minmax(0, 1fr);
+  gap: 14px;
+  padding: 19px 0;
+  border-bottom: 1px solid rgba(17, 19, 24, 0.14);
+}
+.access-steps li > span {
+  color: var(--red);
+  font-family: var(--font-numeric);
+  font-size: 22px;
+  font-weight: 700;
+  line-height: 1;
+}
+.access-steps h3 {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: 24px;
+  font-weight: 900;
+  line-height: 1;
+  letter-spacing: -0.025em;
+  text-transform: uppercase;
+}
+.access-steps p {
+  margin: 6px 0 0;
+  color: #6a6e76;
+  font-size: 14px;
+  line-height: 1.45;
+}
+.access-list {
+  margin: 18px 0 0;
+  padding: 0;
+  list-style: none;
+  border-top: 1px solid rgba(17, 19, 24, 0.14);
+}
+.access-list li {
+  position: relative;
+  padding: 13px 0 13px 22px;
+  border-bottom: 1px solid rgba(17, 19, 24, 0.1);
+  color: #555a63;
+  font-size: 15px;
+  line-height: 1.45;
+}
+.access-list li::before {
+  content: "";
+  position: absolute;
+  top: 20px;
+  left: 0;
+  width: 6px;
+  height: 6px;
+  background: var(--red);
+}
+.access-cta { margin-top: 30px; }
+.access-aside {
+  align-self: start;
+  padding-left: 30px;
+  border-left: 1px solid rgba(17, 19, 24, 0.14);
+}
+.access-aside-kicker {
+  margin: 0 0 14px;
+  color: var(--red);
+  font-family: var(--font-subtitle);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+}
+.access-mail {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 15px 0;
+  color: var(--ink);
+  text-decoration: none;
+  border-top: 1px solid rgba(17, 19, 24, 0.18);
+  border-bottom: 1px solid rgba(17, 19, 24, 0.18);
+}
+.access-mail:hover { color: var(--red); }
+.access-mail-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  flex: none;
+  border: 1px solid rgba(207, 23, 57, 0.55);
+  color: var(--red);
+}
+.access-mail-icon svg {
+  width: 18px; height: 18px; fill: none; stroke: currentColor;
+  stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round;
+}
+.access-mail strong {
+  display: block;
+  overflow-wrap: anywhere;
+  font-family: var(--font-label);
+  font-size: 17px;
+  font-weight: 600;
+}
+.access-mail small {
+  display: block;
+  margin-top: 4px;
+  color: #777b83;
+  font-family: var(--font-subtitle);
+  font-size: 9px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+.access-note {
+  margin: 16px 0 0;
+  color: #858990;
+  font-size: 12px;
+  line-height: 1.5;
+}
+.access-main > .access-note { margin-top: 18px; }
+
+@media (max-width: 860px) {
+  .access-hero { padding: 58px 0 42px; }
+  .access-hero h1 { font-size: clamp(48px, 11vw, 74px); }
+  .access-hero-intro { font-size: 16px; }
+  .access-content { padding-bottom: 64px; }
+  .access-layout { grid-template-columns: 1fr; gap: 38px; padding-top: 38px; }
+  .access-aside { padding-left: 0; border-left: 0; border-top: 1px solid rgba(17, 19, 24, 0.14); padding-top: 24px; }
+}
