@@ -3,17 +3,78 @@ import Layout from "../layouts/Layout.astro";
 
 export function getStaticPaths() {
   const secciones = [
-  { slug: "club", title: "El Club", eyebrow: "Identidad", copy: "Historia, valores y significado de los colores albirrojos." },
-  { slug: "equipos", title: "Equipos", eyebrow: "Categorías", copy: "Primer Equipo, Intermedia, Femenina, Juveniles e Infantiles." },
-  { slug: "eventos", title: "Eventos", eyebrow: "Vida de club", copy: "Tercer tiempo, cenas, clínicas y actividades de la comunidad." },
-  { slug: "noticias", title: "Noticias", eyebrow: "Actualidad", copy: "Crónicas, comunicados y novedades del club." },
-  { slug: "comunidad", title: "Comunidad", eyebrow: "Pertenencia", copy: "Las personas que hacen posible el club." },
-  { slug: "videos", title: "Videos", eyebrow: "Video", copy: "Crónicas, entrevistas y videos del club." },
-  { slug: "tickets", title: "Tickets", eyebrow: "Eventos comprables", copy: "Todos los partidos y eventos con venta de entradas." },
-  { slug: "privacidad", title: "Privacidad", eyebrow: "Legal", copy: "Política de privacidad del sitio y tratamiento de datos." },
-  { slug: "terminos", title: "Términos", eyebrow: "Legal", copy: "Condiciones de uso del sitio de Horcones RC." },
-  { slug: "devoluciones", title: "Devoluciones", eyebrow: "Legal", copy: "Condiciones de cambios y devoluciones de productos." },
+    {
+      slug: "club",
+      title: "El Club",
+      eyebrow: "Identidad",
+      copy: "Historia, valores y significado de los colores albirrojos.",
+      note: "La historia y los contenidos institucionales están en preparación.",
+    },
+    {
+      slug: "equipos",
+      title: "Equipos",
+      eyebrow: "Primer Equipo",
+      copy: "Hoy Horcones compite con Primer Equipo. Plantel y fichas en preparación.",
+      note: "El plantel y las fichas individuales se publicarán cuando exista material autorizado.",
+    },
+    {
+      slug: "eventos",
+      title: "Eventos",
+      eyebrow: "Vida de club",
+      copy: "Tercer tiempo, cenas, clínicas y actividades de la comunidad.",
+      note: "El calendario de eventos se integrará cuando esté confirmado.",
+    },
+    {
+      slug: "noticias",
+      title: "Noticias",
+      eyebrow: "Actualidad",
+      copy: "Crónicas, comunicados y novedades del club.",
+      note: "La primera tanda de noticias se publicará desde el CMS.",
+    },
+    {
+      slug: "comunidad",
+      title: "Comunidad",
+      eyebrow: "Pertenencia",
+      copy: "Las personas que hacen posible el club.",
+      note: "Las historias de la comunidad se incorporarán en una próxima etapa.",
+    },
+    {
+      slug: "videos",
+      title: "Videos",
+      eyebrow: "Video",
+      copy: "Crónicas, entrevistas y videos del club.",
+      note: "El canal de videos se habilitará cuando estén disponibles las URLs oficiales.",
+    },
+    {
+      slug: "tickets",
+      title: "Tickets",
+      eyebrow: "Eventos comprables",
+      copy: "Todos los partidos y eventos con venta de entradas.",
+      note: "La venta de tickets se activará cuando la pasarela y los eventos estén confirmados.",
+    },
+    {
+      slug: "privacidad",
+      title: "Privacidad",
+      eyebrow: "Legal",
+      copy: "Política de privacidad del sitio y tratamiento de datos.",
+      note: "El texto legal definitivo está en revisión.",
+    },
+    {
+      slug: "terminos",
+      title: "Términos",
+      eyebrow: "Legal",
+      copy: "Condiciones de uso del sitio de Horcones RC.",
+      note: "Las condiciones definitivas están en revisión.",
+    },
+    {
+      slug: "devoluciones",
+      title: "Devoluciones",
+      eyebrow: "Legal",
+      copy: "Condiciones de cambios y devoluciones de productos.",
+      note: "La política de devoluciones está en revisión.",
+    },
   ];
+
   return secciones.map((seccion) => ({
     params: { seccion: seccion.slug },
     props: { seccion },
@@ -21,17 +82,39 @@ export function getStaticPaths() {
 }
 
 const { seccion } = Astro.props;
-
 const title = `${seccion.title} · Horcones RC`;
 ---
 
 <Layout title={title} description={seccion.copy}>
-  <section class="placeholder">
-    <p class="placeholder-eyebrow">{seccion.eyebrow}</p>
-    <h1>{seccion.title}</h1>
-    <p>{seccion.copy}</p>
-    <p class="placeholder-note">Sección en construcción. Siguiente rebanada de diseño.</p>
-    <a class="btn btn-primary" href="/">Volver al inicio</a>
+  <section class="shell-hero" aria-labelledby="shell-title">
+    <div class="section-wrap">
+      <p class="section-kicker">{seccion.eyebrow}</p>
+      <h1 id="shell-title">{seccion.title}</h1>
+      <p class="shell-intro">{seccion.copy}</p>
+      <span class="shell-status">Contenido en preparación</span>
+    </div>
+  </section>
+
+  <section class="shell-content">
+    <div class="section-wrap shell-layout">
+      <div class="shell-main">
+        <h2>Estamos preparando esta sección.</h2>
+        <p>{seccion.note}</p>
+        <ul class="shell-checklist">
+          <li>Contenido editorial definitivo.</li>
+          <li>Datos actualizados y aprobados.</li>
+          <li>Materiales e imágenes autorizadas.</li>
+        </ul>
+        <a class="btn btn-primary shell-cta" href="/">Volver al inicio</a>
+      </div>
+
+      <aside class="shell-aside" aria-label="Enlaces disponibles">
+        <p class="shell-aside-title">Mientras tanto</p>
+        <a href="/partidos">Partidos</a>
+        <a href="/tienda">Tienda</a>
+        <a href="/sumate">Súmate</a>
+        <a href="/auspicios">Auspicios</a>
+      </aside>
+    </div>
   </section>
 </Layout>
-
