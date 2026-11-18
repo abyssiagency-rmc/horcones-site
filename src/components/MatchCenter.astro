@@ -1,57 +1,117 @@
 ---
-import FixtureExtension from "./FixtureExtension.astro";
+import { fixtures, nextMatch, standings } from "../data/match";
 
-const match = {
-  kicker: "Próximo partido",
-  title: "Nos vemos en la cancha.",
-  home: "Horcones",
-  homeLabel: "Local",
-  homeTeam: "Primer Equipo",
-  away: "Por confirmar",
-  awayLabel: "Visitante",
-  awayTeam: "Rival",
-  day: "Sábado",
-  time: "18:00",
-  venue: "Cancha Horcones",
-};
+const topThree = standings.filter((fila) => fila.pos >= 3 && fila.pos <= 5);
 ---
 
 <section class="match-section" aria-labelledby="match-title">
   <div class="section-wrap">
-    <header class="section-head">
-      <div>
-        <p class="section-kicker">{match.kicker}</p>
-        <h2 id="match-title">{match.title}</h2>
-      </div>
-    </header>
-
-    <div class="match-board">
-      <div class="match-team match-team--home">
-        <div class="team-crest">
-          <img src="/images/logo-horcones.png" alt="Escudo de Horcones RC" />
+    <div class="match-top">
+      <header class="match-title-block">
+        <p class="section-kicker">Próximo partido</p>
+        <h2 id="match-title">Nos vemos en la cancha.</h2>
+      </header>
+      <div class="fixture-head-block">
+        <div>
+          <p class="section-kicker">Fixture</p>
+          <h3>Próximos partidos</h3>
         </div>
-        <p class="team-label">{match.homeLabel}</p>
-        <h3>{match.home}</h3>
-        <p class="team-meta">{match.homeTeam}</p>
-      </div>
-
-      <div class="match-center">
-        <p class="match-vs">VS</p>
-        <div class="match-when">
-          <span>{match.day}</span>
-          <strong>{match.time}</strong>
-        </div>
-        <p class="match-venue">{match.venue}</p>
-      </div>
-
-      <div class="match-team match-team--away">
-        <div class="team-crest team-crest--placeholder" aria-hidden="true">?</div>
-        <p class="team-label">{match.awayLabel}</p>
-        <h3>{match.away}</h3>
-        <p class="team-meta">{match.awayTeam}</p>
+        <a class="section-link" href="/partidos">Ver calendario <span aria-hidden="true">→</span></a>
       </div>
     </div>
 
-    <FixtureExtension />
+    <div class="match-cards">
+      <article class="next-match-card">
+        <div class="next-match-top">
+          <span>{nextMatch.competicion}</span>
+          <span>{nextMatch.dia}</span>
+        </div>
+        <div class="next-match-clubs">
+          <div class="next-club">
+            <div class="next-crest">
+              <img src="/images/logo-horcones.png" alt="Escudo de Horcones RC" />
+            </div>
+            <p class="next-label">{nextMatch.localLabel}</p>
+            <h3>{nextMatch.local}</h3>
+          </div>
+          <span class="next-vs" aria-hidden="true">VS</span>
+          <div class="next-club">
+            <div class="next-crest next-crest--placeholder" aria-hidden="true">?</div>
+            <p class="next-label">{nextMatch.visitanteLabel}</p>
+            <h3>{nextMatch.visitante}</h3>
+          </div>
+        </div>
+        <div class="next-match-footer">
+          <strong>{nextMatch.hora}</strong>
+          <span>{nextMatch.sede}</span>
+        </div>
+      </article>
+
+      {fixtures.slice(0, 2).map((partido) => (
+        <article class="fixture-card">
+          <img class="fixture-pattern" src="/images/fixture-pattern.svg" alt="" aria-hidden="true" loading="lazy" />
+          <div class="fixture-head-block">
+            <span>{partido.competicion}</span>
+            <span class="fixture-date">{partido.fecha}</span>
+          </div>
+          <div class="fixture-matchup">
+            <h4>{partido.local}</h4>
+            <span class="fixture-vs" aria-hidden="true">VS</span>
+            <h4>{partido.visita}</h4>
+          </div>
+          <div class="fixture-meta">
+            <span>{partido.condicion}</span>
+            <span>{partido.sede}</span>
+          </div>
+          <span class="fixture-social fixture-social--disabled" role="img" aria-label="Publicación de Instagram próximamente">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <rect x="3" y="3" width="18" height="18" rx="5" />
+              <circle cx="12" cy="12" r="4" />
+              <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none" />
+            </svg>
+          </span>
+        </article>
+      ))}
+    </div>
+
+    <section class="standings standings--home" aria-labelledby="standings-title">
+      <header class="standings-head">
+        <div>
+          <p class="section-kicker">Central ARUMET 2026</p>
+          <h3 id="standings-title">Tabla de posiciones</h3>
+        </div>
+        <a class="section-link" href="/partidos">Ver tabla completa <span aria-hidden="true">→</span></a>
+      </header>
+
+      <div class="table-scroll">
+        <table>
+          <caption class="sr-only">Tabla parcial de posiciones del Central ARUMET 2026</caption>
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Equipo</th>
+              <th scope="col">Pts</th>
+              <th scope="col">PJ</th>
+              <th scope="col">PF</th>
+              <th scope="col">PC</th>
+              <th scope="col">DP</th>
+            </tr>
+          </thead>
+          <tbody>
+            {topThree.map((fila) => (
+              <tr class:list={fila.equipo === "Horcones RC" && "is-horcones"}>
+                <td>{fila.pos}</td>
+                <th scope="row">{fila.equipo}</th>
+                <td class="pts">{fila.pts}</td>
+                <td>{fila.pj}</td>
+                <td>{fila.pf}</td>
+                <td>{fila.pc}</td>
+                <td class="dp">{fila.dp}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </section>
   </div>
 </section>

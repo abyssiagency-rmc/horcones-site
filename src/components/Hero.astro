@@ -60,6 +60,10 @@ import { heroSlides } from "../data/hero";
         ></button>
       ))}
     </div>
+    <button class="hero-pause" type="button" data-hero-pause aria-pressed="false" aria-label="Pausar rotación automática">
+      <span class="hero-pause-icon" aria-hidden="true"></span>
+      <span data-hero-pause-label>Pausar</span>
+    </button>
   </div>
 </section>
 
@@ -68,9 +72,12 @@ import { heroSlides } from "../data/hero";
   if (hero) {
     const slides = Array.from(hero.querySelectorAll<HTMLElement>("[data-slide]"));
     const dots = Array.from(hero.querySelectorAll<HTMLButtonElement>("[data-hero-dot]"));
+    const pauseButton = hero.querySelector<HTMLButtonElement>("[data-hero-pause]");
+    const pauseLabel = hero.querySelector<HTMLElement>("[data-hero-pause-label]");
     const reduced = window.matchMedia("(prefers-reduced-motion: reduce)");
     let current = 0;
     let timer = 0;
+    let paused = reduced.matches;
 
     const setSlide = (next: number) => {
       current = (next + slides.length) % slides.length;
@@ -94,9 +101,23 @@ import { heroSlides } from "../data/hero";
 
     const start = () => {
       stop();
-      if (reduced.matches) return;
+      if (paused || reduced.matches) return;
       timer = window.setInterval(() => setSlide(current + 1), 4500);
     };
+
+    const updatePause = () => {
+      hero.classList.toggle("is-paused", paused);
+      pauseButton?.setAttribute("aria-pressed", String(paused));
+      pauseButton?.setAttribute("aria-label", paused ? "Reanudar rotación automática" : "Pausar rotación automática");
+      if (pauseLabel) pauseLabel.textContent = paused ? "Reanudar" : "Pausar";
+    };
+
+    pauseButton?.addEventListener("click", () => {
+      paused = !paused;
+      updatePause();
+      if (paused) stop();
+      else start();
+    });
 
     dots.forEach((dot) => dot.addEventListener("click", () => {
       setSlide(Number(dot.dataset.index));
@@ -138,9 +159,12 @@ import { heroSlides } from "../data/hero";
     });
 
     reduced.addEventListener?.("change", () => {
+      paused = reduced.matches;
+      updatePause();
       start();
     });
 
+    updatePause();
     setSlide(0);
     start();
   }

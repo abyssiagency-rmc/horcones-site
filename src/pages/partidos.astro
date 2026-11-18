@@ -1,0 +1,61 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { standings } from "../data/match";
+---
+
+<Layout title="Partidos · Horcones RC" description="Fixture, resultados y tabla de posiciones del Central ARUMET 2026.">
+  <section class="partidos-page-hero">
+    <div class="section-wrap">
+      <p class="section-kicker">Central ARUMET 2026</p>
+      <h1>Partidos.</h1>
+      <p class="partidos-page-intro">Fixture, resultados y tabla completa de la competencia.</p>
+    </div>
+  </section>
+
+  <section class="partidos-page-table standings" aria-labelledby="tabla-title">
+    <div class="section-wrap">
+      <header class="standings-head">
+        <div>
+          <p class="section-kicker">Central ARUMET 2026</p>
+          <h2 id="tabla-title">Tabla de posiciones</h2>
+        </div>
+        <a class="section-link" href="/">Volver al inicio <span aria-hidden="true">→</span></a>
+      </header>
+
+      <div class="table-scroll">
+        <table>
+          <caption class="sr-only">Tabla completa de posiciones del Central ARUMET 2026</caption>
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Equipo</th>
+              <th scope="col">Pts</th>
+              <th scope="col">PJ</th>
+              <th scope="col">PF</th>
+              <th scope="col">PC</th>
+              <th scope="col">DP</th>
+            </tr>
+          </thead>
+          <tbody>
+            {standings.map((fila) => (
+              <tr class:list={fila.equipo === "Horcones RC" && "is-horcones"}>
+                <td>{fila.pos}</td>
+                <th scope="row">{fila.equipo}</th>
+                <td class="pts">{fila.pts}</td>
+                <td>{fila.pj}</td>
+                <td>{fila.pf}</td>
+                <td>{fila.pc}</td>
+                <td class="dp">{fila.dp}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+
+      <p class="standings-source">
+        Fuente:
+        <a href="https://www.melipilladeportes.cl/horcones-rc-sumo-su-primer-triunfo-en-el-central-arumet-tras-wo-de-dogos/" target="_blank" rel="noreferrer">Melipilla Deportes</a>.
+      </p>
+    </div>
+  </section>
+</Layout>
