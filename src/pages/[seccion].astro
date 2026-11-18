@@ -12,6 +12,9 @@ export function getStaticPaths() {
   { slug: "tickets", title: "Tickets", eyebrow: "Eventos comprables", copy: "Todos los partidos y eventos con venta de entradas." },
   { slug: "auspicios", title: "Auspicios", eyebrow: "Auspiciadores", copy: "Propuesta para empresas que quieren acompañar al club." },
   { slug: "sumate", title: "Súmate", eyebrow: "Nuevos integrantes", copy: "Cómo sumarse al club, categorías y días de entrenamiento." },
+  { slug: "privacidad", title: "Privacidad", eyebrow: "Legal", copy: "Política de privacidad del sitio y tratamiento de datos." },
+  { slug: "terminos", title: "Términos", eyebrow: "Legal", copy: "Condiciones de uso del sitio de Horcones RC." },
+  { slug: "devoluciones", title: "Devoluciones", eyebrow: "Legal", copy: "Condiciones de cambios y devoluciones de productos." },
   ];
   return secciones.map((seccion) => ({
     params: { seccion: seccion.slug },
