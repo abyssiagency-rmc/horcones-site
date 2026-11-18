@@ -419,13 +419,10 @@ img { display: block; max-width: 100%; }
   color: var(--red);
 }
 .hero-actions .btn-ghost {
-  padding: 0 2px;
-  border-color: transparent;
-  text-decoration: underline;
-  text-underline-offset: 5px;
-  text-decoration-thickness: 1px;
+  border-color: rgba(255, 255, 255, 0.7);
+  text-decoration: none;
 }
-.hero-actions .btn-ghost:hover { background: transparent; color: #ffccd6; }
+.hero-actions .btn-ghost:hover { background: rgba(255, 255, 255, 0.14); }
 
 .hero-slide--shop { background: var(--red); }
 .hero-slide--shop .hero-scrim {
@@ -1551,7 +1548,7 @@ img { display: block; max-width: 100%; }
 
 /* Auspiciadores */
 .partners-section {
-  background: #ebe7df;
+  background: var(--paper);
   padding: 64px 0 72px;
   border-top: 1px solid rgba(17, 19, 24, 0.12);
 }
