@@ -60,10 +60,6 @@ import { heroSlides } from "../data/hero";
         ></button>
       ))}
     </div>
-    <button class="hero-pause" type="button" data-hero-pause aria-pressed="false" aria-label="Pausar rotación automática">
-      <span class="hero-pause-icon" aria-hidden="true"></span>
-      <span data-hero-pause-label>Pausar</span>
-    </button>
   </div>
 </section>
 
@@ -72,12 +68,10 @@ import { heroSlides } from "../data/hero";
   if (hero) {
     const slides = Array.from(hero.querySelectorAll<HTMLElement>("[data-slide]"));
     const dots = Array.from(hero.querySelectorAll<HTMLButtonElement>("[data-hero-dot]"));
-    const pauseButton = hero.querySelector<HTMLButtonElement>("[data-hero-pause]");
-    const pauseLabel = hero.querySelector<HTMLElement>("[data-hero-pause-label]");
     const reduced = window.matchMedia("(prefers-reduced-motion: reduce)");
     let current = 0;
     let timer = 0;
-    let paused = reduced.matches;
+    let manual = false;
 
     const setSlide = (next: number) => {
       current = (next + slides.length) % slides.length;
@@ -101,43 +95,34 @@ import { heroSlides } from "../data/hero";
 
     const start = () => {
       stop();
-      if (paused || reduced.matches) return;
+      if (manual || reduced.matches) return;
       timer = window.setInterval(() => setSlide(current + 1), 4500);
     };
 
-    const updatePause = () => {
-      hero.classList.toggle("is-paused", paused);
-      pauseButton?.setAttribute("aria-pressed", String(paused));
-      pauseButton?.setAttribute("aria-label", paused ? "Reanudar rotación automática" : "Pausar rotación automática");
-      if (pauseLabel) pauseLabel.textContent = paused ? "Reanudar" : "Pausar";
-    };
-
-    pauseButton?.addEventListener("click", () => {
-      paused = !paused;
-      updatePause();
-      if (paused) stop();
-      else start();
-    });
-
     dots.forEach((dot) => dot.addEventListener("click", () => {
+      manual = true;
+      stop();
       setSlide(Number(dot.dataset.index));
-      start();
     }));
 
     hero.addEventListener("pointerenter", stop);
-    hero.addEventListener("pointerleave", start);
+    hero.addEventListener("pointerleave", () => {
+      if (!manual) start();
+    });
     hero.addEventListener("focusin", stop);
     hero.addEventListener("focusout", (event) => {
-      if (!hero.contains(event.relatedTarget as Node)) start();
+      if (!hero.contains(event.relatedTarget as Node) && !manual) start();
     });
     hero.addEventListener("keydown", (event) => {
       if (event.key === "ArrowLeft") {
+        manual = true;
+        stop();
         setSlide(current - 1);
-        start();
       }
       if (event.key === "ArrowRight") {
+        manual = true;
+        stop();
         setSlide(current + 1);
-        start();
       }
     });
 
@@ -148,23 +133,22 @@ import { heroSlides } from "../data/hero";
     hero.addEventListener("touchend", (event) => {
       const delta = (event.changedTouches[0]?.clientX ?? 0) - touchStart;
       if (Math.abs(delta) > 45) {
+        manual = true;
+        stop();
         setSlide(current + (delta < 0 ? 1 : -1));
-        start();
       }
     }, { passive: true });
 
     document.addEventListener("visibilitychange", () => {
       if (document.hidden) stop();
-      else start();
+      else if (!manual) start();
     });
 
     reduced.addEventListener?.("change", () => {
-      paused = reduced.matches;
-      updatePause();
-      start();
+      if (reduced.matches) stop();
+      else if (!manual) start();
     });
 
-    updatePause();
     setSlide(0);
     start();
   }
