@@ -87,9 +87,11 @@ Orden actual:
 
 ### Footer (cerrado en esta rebanada)
 
-- Logo centrado, sin borde ni fondo, enlace al inicio.
+- Logo central entre las columnas (128 px desktop, 104 px tablet, 96 px móvil),
+  sin borde ni fondo, enlace al inicio.
 - Enlaces: Club (El Club, Equipos, Eventos), Sitio (Partidos, Noticias,
   Videos, Tienda), Participa (Comunidad, Súmate, Auspicios, Tickets).
+- Tabla de enlaces compacta, con 10 px entre columnas.
 - Derecha: iconos de Instagram, TikTok y YouTube **sin enlace todavía**
   (`data-pendiente="url"`) y correo destacado sin rojo.
 - Abajo: copyright y enlaces reales a Privacidad, Términos y Devoluciones.
