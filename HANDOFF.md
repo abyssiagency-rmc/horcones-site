@@ -37,7 +37,7 @@ C:\000 - aaa\app_horcones\site
 Último commit:
 
 ```
-b5db29d fix(site): restaurar CTA calendario y fondo auspiciadores
+6759233 feat(site): footer con logo centrado, RRSS, stubs legales y tokens consolidados
 ```
 
 ## 3. Secciones de la Home
@@ -83,7 +83,17 @@ Orden actual:
 - Tienda: 3 camisetas SVG transparentes.
 - Súmate/Auspicios: dos tarjetas.
 - Auspiciadores: 6 placeholders.
-- Footer: contacto por correo.
+- Footer: logo centrado, 3 grupos de enlaces, RRSS y correo destacado.
+
+### Footer (cerrado en esta rebanada)
+
+- Logo centrado, sin borde ni fondo, enlace al inicio.
+- Enlaces: Club (El Club, Equipos, Eventos), Sitio (Partidos, Noticias,
+  Videos, Tienda), Participa (Comunidad, Súmate, Auspicios, Tickets).
+- Derecha: iconos de Instagram, TikTok y YouTube **sin enlace todavía**
+  (`data-pendiente="url"`) y correo destacado sin rojo.
+- Abajo: copyright y enlaces reales a Privacidad, Términos y Devoluciones.
+- Sin formularios, sin redes inventadas, sin efectos de borde.
 
 ## 4. Páginas existentes
 
@@ -108,6 +118,14 @@ Stubs dinámicos:
 /sumate
 ```
 
+Stubs legales (nuevos, reutilizan la plantilla de sección en construcción):
+
+```
+/privacidad
+/terminos
+/devoluciones
+```
+
 ## 5. Sistema visual
 
 Fuentes:
@@ -126,13 +144,25 @@ Colores principales:
 ```
 --red:        #cf1739
 --red-bright: #f6264d
+--red-hover:  #ff4967
 --red-dark:   #a80f2b
 --red-deep:   #8d0b24
 --separator:  #b51f3b
+--red-soft:   #ff9eb1
+--red-tint:   #ffccd6
+--black:      #111
 --ink:        #111318
+--ink-700:    #161616
+--ink-800:    #121419
+--ink-900:    #0d0e12
 --paper:      #fefdfc
+--paper-2:    #e9e6de
+--paper-3:    #efede7
 --white:      #ffffff
 ```
+
+Los hex sueltos de rojo, tinta y papel ya no se usan fuera de `:root`;
+todo consume tokens. El footer usa además `--footer-*` (blanco con alfa).
 
 Cambios recientes:
 
@@ -174,11 +204,9 @@ site/public/fonts/
 
 ### P0 · Antes de publicar
 
-1. **Footer**
-   - Enlazar Partidos, Comunidad, Videos, Súmate y Auspicios.
-   - Convertir Privacidad, Términos y Devoluciones en enlaces reales o quitarlos.
-   - Hacer el logo clicable al inicio.
-   - Añadir redes sociales solo cuando existan URLs oficiales.
+1. **RRSS**
+   - Conectar Instagram, TikTok y YouTube cuando existan URLs oficiales.
+   - Hoy los iconos existen en el footer sin `href` (`data-pendiente="url"`).
 
 2. **Assets reales**
    - Reemplazar fotos de jugadores de Wikimedia por fotos propias autorizadas.
@@ -188,6 +216,7 @@ site/public/fonts/
    - Vectorizar el escudo; hoy es PNG de baja resolución.
 
 3. **Contenido**
+   - Redactar y validar Privacidad, Términos y Devoluciones (hoy stubs).
    - Confirmar tabla ARUMET y fecha de actualización.
    - Confirmar precios y tallas de tienda.
    - Confirmar fixture real.
@@ -195,11 +224,11 @@ site/public/fonts/
 
 ### P1 · Calidad
 
-1. Consolidar tokens de rojo y negros.
-2. Añadir estilos `:focus-visible`.
-3. Revisar contraste de metadatos pequeños.
-4. Mejorar affordance de tabla en móvil.
-5. Limpiar CSS y componentes sin uso (`FixtureExtension`).
+1. Añadir estilos `:focus-visible` al resto del sitio (el footer ya los tiene).
+2. Revisar contraste de metadatos pequeños fuera del footer
+   (`#73777f`, `#777b83` y `#858990` quedan bajo AA sobre `#fefdfc`).
+3. Mejorar affordance de tabla en móvil.
+4. Limpiar CSS y componentes sin uso (`FixtureExtension`).
 
 ### P2 · Producto
 
@@ -268,12 +297,13 @@ Reglas:
 
 ## 11. Último estado conocido
 
-- Build: OK.
+- Build: OK (15 páginas).
 - Dev server: activo en `4321`.
-- Home: estable y aprobada visualmente.
-- Footer: pendiente de completar.
-- Paleta: pendiente de consolidación.
-- Páginas internas: pendientes.
-- Contenido: placeholders en varios puntos.
+- Home: intacta, con diff de píxeles 0 respecto de la versión aprobada.
+- Footer: completo, con logo centrado, 3 grupos de enlaces, RRSS sin URL
+  y legal enlazado a stubs.
+- Paleta: consolidada en tokens, sin cambio visual.
+- Páginas internas: pendientes, salvo los tres stubs legales.
+- Contenido: placeholders en varios puntos; RRSS esperando URLs oficiales.
 
 Si algo no coincide con el código, el código manda.
