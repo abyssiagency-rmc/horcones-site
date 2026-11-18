@@ -6,19 +6,12 @@ const topThree = standings.filter((fila) => fila.pos >= 3 && fila.pos <= 5);
 
 <section class="match-section" aria-labelledby="match-title">
   <div class="section-wrap">
-    <div class="match-top">
-      <header class="match-title-block">
+    <header class="match-top">
+      <div class="match-title-block">
         <p class="section-kicker">Próximo partido</p>
         <h2 id="match-title">Nos vemos en la cancha.</h2>
-      </header>
-      <div class="fixture-head-block">
-        <div>
-          <p class="section-kicker">Fixture</p>
-          <h3>Próximos partidos</h3>
-        </div>
-        <a class="section-link" href="/partidos">Ver calendario <span aria-hidden="true">→</span></a>
       </div>
-    </div>
+    </header>
 
     <div class="match-cards">
       <article class="next-match-card">
@@ -47,31 +40,29 @@ const topThree = standings.filter((fila) => fila.pos >= 3 && fila.pos <= 5);
         </div>
       </article>
 
-      {fixtures.slice(0, 2).map((partido) => (
-        <article class="fixture-card">
-          <img class="fixture-pattern" src="/images/fixture-pattern.svg" alt="" aria-hidden="true" loading="lazy" />
-          <div class="fixture-head-block">
+      {fixtures.slice(0, 2).map((partido, index) => (
+        <a class="upcoming-card" href="/partidos">
+          <div class="upcoming-top">
             <span>{partido.competicion}</span>
-            <span class="fixture-date">{partido.fecha}</span>
+            <span>{partido.fecha}</span>
           </div>
-          <div class="fixture-matchup">
+          <div class="upcoming-date">
+            <strong>{String(index + 4).padStart(2, "0")}</strong>
+            <span>Fecha por confirmar</span>
+          </div>
+          <div class="upcoming-matchup">
             <h4>{partido.local}</h4>
-            <span class="fixture-vs" aria-hidden="true">VS</span>
+            <span aria-hidden="true">vs</span>
             <h4>{partido.visita}</h4>
           </div>
-          <div class="fixture-meta">
-            <span>{partido.condicion}</span>
-            <span>{partido.sede}</span>
-          </div>
-          <span class="fixture-social fixture-social--disabled" role="img" aria-label="Publicación de Instagram próximamente">
-            <svg viewBox="0 0 24 24" aria-hidden="true">
-              <rect x="3" y="3" width="18" height="18" rx="5" />
-              <circle cx="12" cy="12" r="4" />
-              <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none" />
-            </svg>
-          </span>
-        </article>
+          <p class="upcoming-meta">{partido.condicion} · {partido.sede}</p>
+          <span class="upcoming-link">Ver información <span aria-hidden="true">→</span></span>
+        </a>
       ))}
+    </div>
+
+    <div class="fixture-footer-link">
+      <a class="section-link" href="/partidos">Ver calendario <span aria-hidden="true">→</span></a>
     </div>
 
     <section class="standings standings--home" aria-labelledby="standings-title">
