@@ -2393,6 +2393,7 @@ img { display: block; max-width: 100%; }
   background-size: 4px 4px;
   border-top: 0;
   border-bottom: 3px solid var(--red);
+  border-radius: 25px;
   transition: transform 220ms ease, box-shadow 220ms ease, background-color 220ms ease;
 }
 .upcoming-card:hover {
